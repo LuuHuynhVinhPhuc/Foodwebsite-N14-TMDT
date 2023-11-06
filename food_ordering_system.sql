@@ -1,12 +1,5 @@
--- phpMyAdmin SQL Dump
--- version 5.2.1
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1
--- Generation Time: Oct 07, 2023 at 06:53 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.0.28
 
+use food_ordering_system;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
@@ -134,7 +127,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`ID`, `Fname`, `Lname`, `Uname`, `Password`, `Email`, `Contact`) VALUES
-(1, 'Phuc', 'Luu', 'Marcus', 'a12356789', 'vinhphucluuhuynh@gmail.com', 'i am marcus')
+(1, 'Phuc', 'Luu', 'Marcus', 'a12356789', 'vinhphucluuhuynh@gmail.com', 'i am marcus');
 
 --
 -- Indexes for dumped tables

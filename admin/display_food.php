@@ -3,7 +3,6 @@ include "connections.php";
 include "header.php";
 ?>
 
-
 <!--content area-->
 <div class="breadcrumbs">
     <div class="col-sm-4">

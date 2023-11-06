@@ -55,6 +55,9 @@
                     <li>
                         <a href="food_ingredients.php"> <i class="menu-icon fa fa-dashboard"></i>Add / Edit Ingredients</a>
                     </li>
+                    <li>
+                        <a href="transactions.php"><i class="menu-icon fa fa-dashboard"></i>Transactions History</a>
+                    </li>
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-slice"></i>Food</a>
                         <ul class="sub-menu children dropdown-menu">
