@@ -1,6 +1,32 @@
 <?php
 session_start();
 include "../admin/connections.php";
+
+// checking account 
+if (isset($_POST["submit"])) {
+    // get element from text box
+    $uname = $_POST['uname'];
+    $password = $_POST['password'];
+
+    // get error
+    $error = array();
+    // checking 
+    // all is empty
+    if (empty($uname) or empty($password)) {
+        echo "<div class='alert'>All fields are requied!</div>";
+    }
+    $count = 0;
+    // query
+    $res = mysqli_query($link, "select * from user where Uname = '$uname' and Password = '$password'");
+    $count = mysqli_num_rows($res);
+    if ($count == 0) {
+        echo "<div class='alert'>User not found</div>";
+    }else{
+        $_SESSION['uname'] = $uname;
+        $_SESSION['logged_in'] = true;
+        header('location:index2.php');
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -37,34 +63,6 @@ include "../admin/connections.php";
 
 <body>
 
-    <?php
-    if (isset($_POST["submit"])) {
-        // get element from text box
-        $uname = $_POST['uname'];
-        $password = $_POST['password'];
-
-        // get error
-        $error = array();
-        // checking 
-        // all is empty
-        if (empty($uname) or empty($password)) {
-            echo "<div class='alert'>All fields are requied!</div>";
-        }
-        $count = 0;
-        // query
-        $res = mysqli_query($link, "select * from user where Uname = '$uname' and Password = '$password'");
-        $count = mysqli_num_rows($res);
-        if ($count == 0) {
-            echo "<div class='alert'>User not found</div>";
-        } else {
-    ?>
-            <script type="text/javascript">
-                window.location = "index.php";
-            </script>
-    <?php
-        }
-    }
-    ?>
     <div class="page-wrapper">
 
         <!-- Preloader -->
@@ -107,7 +105,7 @@ include "../admin/connections.php";
                     <div class="auto-container clearfix">
                         <!--Info-->
                         <div class="logo-outer">
-                            <div class="logo" style="margin-top: -20px;"><a href="index-2.html"><img src="assets/images/logo-02.png" alt="" title=""></a></div>
+                            <div class="logo" style="margin-top: -20px;"><a href="index.php"><img src="assets/images/logo-02.png" alt="" title=""></a></div>
                         </div>
 
                         <!--Nav Box-->

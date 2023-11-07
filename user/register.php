@@ -77,7 +77,7 @@ include "../admin/connections.php";
                 if ($sql) {
                     echo "<script>
                             alert('Login successful ^_^');
-                                window.location.href='./index.php';
+                                window.location.href='./login.php';
                         </script>";
                 } else {
                     die("Some thing went wrong, please try again with refresh this page!");

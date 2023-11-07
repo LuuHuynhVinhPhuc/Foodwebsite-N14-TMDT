@@ -1,5 +1,4 @@
 <?php
-session_start();
 include "../admin/connections.php";
 $max = 0;
 if (isset($_SESSION["cart"])) {
