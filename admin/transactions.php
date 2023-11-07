@@ -11,16 +11,16 @@ include "header.php";
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Customer</th>
-                        <th scope="col">Date_Time</th>
-                        <th scope="col">Food Category</th>
-                        <th scope="col">Food Description</th>
-                        <th scope="col">Original Price</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Discount</th>
+                        <th scope="col">Final Price</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
                     $count = 0;
-                         $res = mysqli_query($link, "select * from food");
+                         $res = mysqli_query($link, "select * from receipt");
                          while ($row = mysqli_fetch_array($res))
                          {
                             $count = $count + 1;
