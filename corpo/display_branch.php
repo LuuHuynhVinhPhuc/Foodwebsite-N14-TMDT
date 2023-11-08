@@ -8,14 +8,14 @@ include "header.php";
     <div class="col-sm-4">
         <div class="page-header float-left">
             <div class="page-title">
-                <h1>Added Foods</h1>
+                <h1>Available Branch</h1>
             </div>
         </div>
     </div>
     <div class="col-sm-8">
         <div class="page-header float-right">
             <div class="page-title">
-
+                Hi
             </div>
         </div>
     </div>
@@ -43,7 +43,7 @@ include "header.php";
                 <tbody>
                     <?php
                     $count = 0;
-                         $res = mysqli_query($link, "select * from food where approved = 'yes'");
+                         $res = mysqli_query($link, "select * from food");
                          while ($row = mysqli_fetch_array($res))
                          {
                             $count = $count + 1;

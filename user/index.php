@@ -253,7 +253,7 @@ include "../admin/connections.php";
 
                 <!-- Products Block -->
                 <?php
-                $res = mysqli_query($link, "select * from food");
+                $res = mysqli_query($link, "select * from food where approved = 'yes'");
                 while ($row = mysqli_fetch_array($res)) {
                     ?>
                     <div class="product-block all mix <?php echo $row["food_category"]; ?> salad fest wraps fries col-lg-3 col-md-6 col-sm-12">
