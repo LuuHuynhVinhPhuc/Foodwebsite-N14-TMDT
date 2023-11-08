@@ -163,10 +163,11 @@ if (load_cart_data() > 0) {
 								</span>
 							</li>
 							<li class="text-right">
-								<PayPal>
-								<!-- <button type="submit" class="theme-btn btn-style-five proceed-btn"><span class="txt">Proceed
-										to
-										Checkout</span></button> -->
+								<div id="paypal-button-container"></div>
+								<p id="result-message"></p>
+								<!-- Replace the "test" client-id value with your client-id -->
+								<script src="https://www.paypal.com/sdk/js?client-id=AZIAy3XqY0AMS8N3PFiUU0TYxAe0Z-eEH_ouHjuVy57TWVaHIekn0WehBlEXn7Yzbit6CysUC225JaAE&currency=USD"></script>
+								<script src="app.js"></script>
 							</li>
 						</ul>
 					</div>
@@ -242,7 +243,12 @@ function load_cart_data()
 </script>
 
 <script type="module">
-    import PayPal from 'paypal.js';
+	const root = ReactDOM.createRoot(document.getElementById("paypal-container"))
+	root.render(React.Strict)
+</script>
+
+<script type="module">
+	import PayPal from 'paypal.js';
 </script>
 
 <script src="assets/js/jquery.js"></script>
