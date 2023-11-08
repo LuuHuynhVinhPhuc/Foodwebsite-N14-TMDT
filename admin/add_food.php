@@ -91,7 +91,7 @@ include "header.php";
                                 <label for="cc-payment" class="control-label mb-1">Food Ingredients</label>
                                 <div class="form-group">
                                     <?php
-                                    $res = mysqli_query($link, "select * from food_ingredients order by food_ingredient asc");
+                                    $res = mysqli_query($link, "select * from food_ingredients where approved = 'yes' order by food_ingredient asc");
                                     while ($row = mysqli_fetch_array($res)) {
                                         ?>
                                         <div class="col-lg-4">

@@ -45,7 +45,7 @@
 								<img src="assets/images/resource/service-4.png" alt="" />
 							</div>
 							<h6>25 Minites <br> Delivery</h6>
-							<div class="text">We deliver your food at <br> your dooe that you order</div>
+							<div class="text">We deliver your food at <br> your door that you order</div>
 						</div>
 					</div>
 

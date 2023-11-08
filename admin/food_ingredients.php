@@ -64,10 +64,10 @@ include "header.php";
 </div>
 <!--end: content area-->
 
-<div class="col-lg-12">
+<div class="col-lg-6">
     <div class="card">
         <div class="card-header">
-            <strong class="card-title">Ingredients</strong>
+            <strong class="card-title">Available Ingredients</strong>
         </div>
         <div class="card-body">
             <table class="table table-striped">
@@ -82,7 +82,7 @@ include "header.php";
                 <tbody>
                     <?php
                     $count = 0;
-                         $res = mysqli_query($link, "select * from food_ingredients");
+                         $res = mysqli_query($link, "select * from food_ingredients where approved = 'yes'");
                          while ($row = mysqli_fetch_array($res))
                          {
                             $count = $count + 1;
@@ -93,6 +93,43 @@ include "header.php";
                             style="color: green;">Edit</a> <?php echo "</td>";
                             echo "<td>"; ?><a onclick="confirmDelete(<?php echo $count ?>, <?php echo $row["id"] ?>)" 
                             style="color: red; cursor: pointer">Delete</a> 
+                            <?php echo "</td>";
+                            echo "</tr>";
+                         }
+                    ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-6">
+    <div class="card">
+        <div class="card-header">
+            <strong class="card-title">Not Approved Ingredients</strong>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Ingredients</th>
+                        <th scope="col">Request</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    $count = 0;
+                         $res = mysqli_query($link, "select * from food_ingredients where approved = 'no'");
+                         while ($row = mysqli_fetch_array($res))
+                         {
+                            $count = $count + 1;
+                            echo "<tr>";
+                            echo "<td> $count </td>";
+                            echo "<td>"; echo $row["food_ingredient"]; echo "</td>";
+                            echo "<td>"; ?><a href="request_ingredient.php?name=<?php echo $row["name"]?>" style="color: green;">
+                            Request
+                            </a>
                             <?php echo "</td>";
                             echo "</tr>";
                          }
