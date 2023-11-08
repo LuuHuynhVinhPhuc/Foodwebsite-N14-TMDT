@@ -127,10 +127,9 @@ include "header.php";
                             echo "<tr>";
                             echo "<td> $count </td>";
                             echo "<td>"; echo $row["food_ingredient"]; echo "</td>";
-                            echo "<td>"; ?><a href="request_ingredient.php?name=<?php echo $row["name"]?>" style="color: green;">
-                            Request
-                            </a>
-                            <?php echo "</td>";
+                            echo "<td>"; ?>
+                            <a href="request_ingredient.php?id=<?php echo $row["id"] ?>"
+                            style="color: green;">Request</a> <?php echo "</td>";
                             echo "</tr>";
                          }
                     ?>

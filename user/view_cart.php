@@ -1,6 +1,6 @@
 <?php
 include "header.php";
-	?>
+?>
 
 <!-- Page Title -->
 <section class="page-title" style="background-image: url(assets/images/background/11.jpg)">
@@ -96,7 +96,8 @@ if (load_cart_data() > 0) {
 											</h4>
 										</td>
 										<td class="sub-total">
-											$<?php echo $price_session ?>
+											$
+											<?php echo $price_session ?>
 										</td>
 										<td class="qty">
 											<div class="item-quantity"><input class="quantity-spinner" type="text"
@@ -161,9 +162,12 @@ if (load_cart_data() > 0) {
 									<?php echo $grand_total ?>
 								</span>
 							</li>
-							<li class="text-right"><button type="submit" class="theme-btn btn-style-five proceed-btn"><span
-										class="txt">Proceed to
-										Checkout</span></button></li>
+							<li class="text-right">
+								<PayPal>
+								<!-- <button type="submit" class="theme-btn btn-style-five proceed-btn"><span class="txt">Proceed
+										to
+										Checkout</span></button> -->
+							</li>
 						</ul>
 					</div>
 				</div>
@@ -213,30 +217,33 @@ function load_cart_data()
 ?>
 <script type="text/javascript">
 	function delete_product(tb_id) {
-        var xmlhttp1 = new XMLHttpRequest();
-        xmlhttp1.onreadystatechange = function() {
-            if (xmlhttp1.readyState == 4 && xmlhttp1.status == 200) {
-                window.location = "view_cart.php";
-            }
-        }
-        xmlhttp1.open("GET", "delete_from_cart.php?tb_id=" + tb_id, true);
-        xmlhttp1.send();	
+		var xmlhttp1 = new XMLHttpRequest();
+		xmlhttp1.onreadystatechange = function () {
+			if (xmlhttp1.readyState == 4 && xmlhttp1.status == 200) {
+				window.location = "view_cart.php";
+			}
+		}
+		xmlhttp1.open("GET", "delete_from_cart.php?tb_id=" + tb_id, true);
+		xmlhttp1.send();
 	}
 	function update_product(tb_id, qtyid) {
 		var qty = "qty" + qtyid;
 		var qty1 = document.getElementById(qty).value;
 		var xmlhttp1 = new XMLHttpRequest();
-        xmlhttp1.onreadystatechange = function() {
-            if (xmlhttp1.readyState == 4 && xmlhttp1.status == 200) {
-				alert ("Cart Updated Successfully")
-                window.location = "view_cart.php";
-            }
-        }
-        xmlhttp1.open("GET", "update_from_cart.php?id=" + tb_id + "&qty=" + qty1, true);
-        xmlhttp1.send();
+		xmlhttp1.onreadystatechange = function () {
+			if (xmlhttp1.readyState == 4 && xmlhttp1.status == 200) {
+				alert("Cart Updated Successfully")
+				window.location = "view_cart.php";
+			}
+		}
+		xmlhttp1.open("GET", "update_from_cart.php?id=" + tb_id + "&qty=" + qty1, true);
+		xmlhttp1.send();
 	}
 </script>
 
+<script type="module">
+    import PayPal from 'paypal.js';
+</script>
 
 <script src="assets/js/jquery.js"></script>
 <script src="assets/js/parallax.min.js"></script>
