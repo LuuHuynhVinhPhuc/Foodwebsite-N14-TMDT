@@ -164,9 +164,9 @@ if (load_cart_data() > 0) {
 							</li>
 							<li class="text-right">
 								<div id="paypal-button-container"></div>
-								<p id="result-message"></p>
 								<!-- Replace the "test" client-id value with your client-id -->
-								<script src="https://www.paypal.com/sdk/js?client-id=AZIAy3XqY0AMS8N3PFiUU0TYxAe0Z-eEH_ouHjuVy57TWVaHIekn0WehBlEXn7Yzbit6CysUC225JaAE&currency=USD"></script>
+								<script
+									src="https://www.paypal.com/sdk/js?client-id=AZIAy3XqY0AMS8N3PFiUU0TYxAe0Z-eEH_ouHjuVy57TWVaHIekn0WehBlEXn7Yzbit6CysUC225JaAE&currency=USD"></script>
 								<script src="app.js"></script>
 							</li>
 						</ul>
@@ -214,8 +214,31 @@ function load_cart_data()
 	}
 	return $count;
 }
-
 ?>
+
+<!-- this is where you will handle the script of your paypal button-->
+<script>
+	paypal.Buttons({
+		//sets up the transaction when the payment butotn is clicked
+		createOrder: (data, actions) => {
+			return actions.order.create({
+				purchase_units: [{
+					amount: {
+						value: '<?= $grand_total ?>'
+					}
+				}]
+			});
+		},
+		onApprove: (data, actions) => {
+			return actions.order.capture().then(function (orderData) {
+				console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+				const transaction = orderData.purchase_units[0].payments.captures[0];
+          		alert(`Transaction ${transaction.status}: ${transaction.id}<br><br>See console for all available details`);
+			});
+		}
+	}).render('#paypal-button-container');
+</script>
+
 <script type="text/javascript">
 	function delete_product(tb_id) {
 		var xmlhttp1 = new XMLHttpRequest();
@@ -240,15 +263,6 @@ function load_cart_data()
 		xmlhttp1.open("GET", "update_from_cart.php?id=" + tb_id + "&qty=" + qty1, true);
 		xmlhttp1.send();
 	}
-</script>
-
-<script type="module">
-	const root = ReactDOM.createRoot(document.getElementById("paypal-container"))
-	root.render(React.Strict)
-</script>
-
-<script type="module">
-	import PayPal from 'paypal.js';
 </script>
 
 <script src="assets/js/jquery.js"></script>
