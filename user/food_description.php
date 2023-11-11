@@ -9,7 +9,7 @@ $food_price = "";
 $food_ingredients = "";
 $food_category = "";
 
-$res = mysqli_query($link, "select * from food where id = $id");
+$res = mysqli_query($link, "select * from food where id = $id and approved = 'yes'");
 while ($row = mysqli_fetch_array($res)) {
     $food_name = $row["food_name"];
     $food_description = $row["food_description"];

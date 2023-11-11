@@ -1,6 +1,6 @@
 <?php
 include "header.php";
-	?>
+?>
 
 <!-- Page Title -->
 <section class="page-title" style="background-image: url(assets/images/background/11.jpg)">
@@ -96,7 +96,8 @@ if (load_cart_data() > 0) {
 											</h4>
 										</td>
 										<td class="sub-total">
-											$<?php echo $price_session ?>
+											$
+											<?php echo $price_session ?>
 										</td>
 										<td class="qty">
 											<div class="item-quantity"><input class="quantity-spinner" type="text"
@@ -161,9 +162,13 @@ if (load_cart_data() > 0) {
 									<?php echo $grand_total ?>
 								</span>
 							</li>
-							<li class="text-right"><button type="submit" class="theme-btn btn-style-five proceed-btn"><span
-										class="txt">Proceed to
-										Checkout</span></button></li>
+							<li class="text-right"> 
+								<div id="paypal-button-container"></div>
+								<!-- Replace the "test" client-id value with your client-id -->
+								<script
+									src="https://www.paypal.com/sdk/js?client-id=AZIAy3XqY0AMS8N3PFiUU0TYxAe0Z-eEH_ouHjuVy57TWVaHIekn0WehBlEXn7Yzbit6CysUC225JaAE&currency=USD"></script>
+								<script src="app.js"></script>
+							</li>
 						</ul>
 					</div>
 				</div>
@@ -209,34 +214,68 @@ function load_cart_data()
 	}
 	return $count;
 }
-
 ?>
+
+<!-- this is where you will handle the script of your paypal button-->
+<script>
+	paypal.Buttons({
+		//sets up the transaction when the payment butotn is clicked
+		createOrder: (data, actions) => {
+			return actions.order.create({
+				purchase_units: [{
+					amount: {
+						value: '<?= $grand_total ?>'
+					}
+				}]
+			});
+		},
+		onApprove: (data, actions) => {
+			return actions.order.capture().then(function (orderData) {
+				console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+				const transaction = orderData.purchase_units[0].payments.captures[0];
+          		alert(`Transaction ${transaction.status}: ${transaction.id} \n See console for all available details`);
+				
+				
+
+				$.ajax({
+					method: "POST",
+					url: "url",
+					data: "data",
+					dataType: "dataType",
+					success: function (response) {
+						
+					}
+				});
+			});
+		}
+	}).render('#paypal-button-container');
+</script>
+
 <script type="text/javascript">
 	function delete_product(tb_id) {
-        var xmlhttp1 = new XMLHttpRequest();
-        xmlhttp1.onreadystatechange = function() {
-            if (xmlhttp1.readyState == 4 && xmlhttp1.status == 200) {
-                window.location = "view_cart.php";
-            }
-        }
-        xmlhttp1.open("GET", "delete_from_cart.php?tb_id=" + tb_id, true);
-        xmlhttp1.send();	
+		var xmlhttp1 = new XMLHttpRequest();
+		xmlhttp1.onreadystatechange = function () {
+			if (xmlhttp1.readyState == 4 && xmlhttp1.status == 200) {
+				window.location = "view_cart.php";
+			}
+		}
+		xmlhttp1.open("GET", "delete_from_cart.php?tb_id=" + tb_id, true);
+		xmlhttp1.send();
 	}
 	function update_product(tb_id, qtyid) {
 		var qty = "qty" + qtyid;
 		var qty1 = document.getElementById(qty).value;
 		var xmlhttp1 = new XMLHttpRequest();
-        xmlhttp1.onreadystatechange = function() {
-            if (xmlhttp1.readyState == 4 && xmlhttp1.status == 200) {
-				alert ("Cart Updated Successfully")
-                window.location = "view_cart.php";
-            }
-        }
-        xmlhttp1.open("GET", "update_from_cart.php?id=" + tb_id + "&qty=" + qty1, true);
-        xmlhttp1.send();
+		xmlhttp1.onreadystatechange = function () {
+			if (xmlhttp1.readyState == 4 && xmlhttp1.status == 200) {
+				alert("Cart Updated Successfully")
+				window.location = "view_cart.php";
+			}
+		}
+		xmlhttp1.open("GET", "update_from_cart.php?id=" + tb_id + "&qty=" + qty1, true);
+		xmlhttp1.send();
 	}
 </script>
-
 
 <script src="assets/js/jquery.js"></script>
 <script src="assets/js/parallax.min.js"></script>

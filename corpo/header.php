@@ -13,15 +13,15 @@
     <link rel="apple-touch-icon" href="apple-icon.png">
     <link rel="shortcut icon" href="favicon.ico">
 
-    <link rel="stylesheet" href="assets/css/normalize.css">
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/css/themify-icons.css">
-    <link rel="stylesheet" href="assets/css/flag-icon.min.css">
-    <link rel="stylesheet" href="assets/css/cs-skin-elastic.css">
+    <link rel="stylesheet" href="../admin/assets/css/normalize.css">
+    <link rel="stylesheet" href="../admin/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../admin/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../admin/assets/css/themify-icons.css">
+    <link rel="stylesheet" href="../admin/assets/css/flag-icon.min.css">
+    <link rel="stylesheet" href="../admin/assets/css/cs-skin-elastic.css">
     <!-- <link rel="stylesheet" href="assets/css/bootstrap-select.less"> -->
-    <link rel="stylesheet" href="assets/scss/style.css">
-    <link href="assets/css/lib/vector-map/jqvmap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../admin/assets/scss/style.css">
+    <link href="../admin/assets/css/lib/vector-map/jqvmap.min.css" rel="stylesheet">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
@@ -40,8 +40,8 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>
                 </button>
-                 <a class="navbar-brand" href="./">Admin</a>
-                <a class="navbar-brand hidden" href="./">Admin</a>
+                 <a class="navbar-brand" href="./">Corps</a>
+                <a class="navbar-brand hidden" href="./">C</a>
             </div>
 
             <div id="main-menu" class="main-menu collapse navbar-collapse">
@@ -107,7 +107,7 @@
                 <div class="col-sm-5">
                     <div class="user-area dropdown float-right">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img class="user-avatar rounded-circle" src="images/admin.jpg" alt="User Avatar">
+                            <img class="user-avatar rounded-circle" src="../admin/images/admin.jpg" alt="User Avatar">
                         </a>
                     </div>
 

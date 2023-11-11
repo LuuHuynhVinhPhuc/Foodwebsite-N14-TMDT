@@ -17,7 +17,7 @@ if (isset($_SESSION["cart"])) {
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 	<link href="assets/vendors/flat-icon/flaticon.css" rel="stylesheet">
 
-
+	
 	<!-- Rev slider css -->
 	<link href="assets/vendors/revolution/css/settings.css" rel="stylesheet">
 	<link href="assets/vendors/revolution/css/layers.css" rel="stylesheet">
