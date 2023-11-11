@@ -162,7 +162,7 @@ if (load_cart_data() > 0) {
 									<?php echo $grand_total ?>
 								</span>
 							</li>
-							<li class="text-right">
+							<li class="text-right"> 
 								<div id="paypal-button-container"></div>
 								<!-- Replace the "test" client-id value with your client-id -->
 								<script
@@ -233,7 +233,19 @@ function load_cart_data()
 			return actions.order.capture().then(function (orderData) {
 				console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
 				const transaction = orderData.purchase_units[0].payments.captures[0];
-          		alert(`Transaction ${transaction.status}: ${transaction.id}<br><br>See console for all available details`);
+          		alert(`Transaction ${transaction.status}: ${transaction.id} \n See console for all available details`);
+				
+				
+
+				$.ajax({
+					method: "POST",
+					url: "url",
+					data: "data",
+					dataType: "dataType",
+					success: function (response) {
+						
+					}
+				});
 			});
 		}
 	}).render('#paypal-button-container');
