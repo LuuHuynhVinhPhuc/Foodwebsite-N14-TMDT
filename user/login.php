@@ -63,6 +63,34 @@ if (isset($_POST["submit"])) {
 
 <body>
 
+    <?php
+    if (isset($_POST["submit"])) {
+        // get element from text box
+        $uname = $_POST['uname'];
+        $password = $_POST['password'];
+
+        // get error
+        $error = array();
+        // checking 
+        // all is empty
+        if (empty($uname) or empty($password)) {
+            echo "<div class='alert'>All fields are requied!</div>";
+        }
+        $count = 0;
+        // query
+        $res = mysqli_query($link, "select * from user where Uname = '$uname' and Password = '$password'");
+        $count = mysqli_num_rows($res);
+        if ($count == 0) {
+            echo "<div class='alert'>User not found</div>";
+        } else {
+    ?>
+            <script type="text/javascript">
+                window.location = "index.php";
+            </script>
+    <?php
+        }
+    }
+    ?>
     <div class="page-wrapper">
 
         <!-- Preloader -->
@@ -89,7 +117,7 @@ if (isset($_POST["submit"])) {
                         <div class="option-list">
                             <!-- Cart Button -->
                             <div class="cart-btn">
-                                <a href="shoping-cart.html" class="icon flaticon-shopping-cart" style="color: black"><span class="total-cart" style="background-color: #a40301;color:white">3</span></a>
+                                <a href="./view_cart.php" class="icon flaticon-shopping-cart" style="color: black"><span class="total-cart" style="background-color: #a40301;color:white">3</span></a>
                             </div>
                             <!-- Search Btn -->
 
@@ -105,7 +133,7 @@ if (isset($_POST["submit"])) {
                     <div class="auto-container clearfix">
                         <!--Info-->
                         <div class="logo-outer">
-                            <div class="logo" style="margin-top: -20px;"><a href="index.php"><img src="assets/images/logo-02.png" alt="" title=""></a></div>
+                            <div class="logo" style="margin-top: -20px;"><a href="./index.php"><img src="assets/images/logo-02.png" alt="" title=""></a></div>
                         </div>
 
                         <!--Nav Box-->

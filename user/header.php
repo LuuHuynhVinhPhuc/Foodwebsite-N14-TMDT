@@ -1,4 +1,5 @@
 <?php
+session_start();
 include "../admin/connections.php";
 $max = 0;
 if (isset($_SESSION["cart"])) {
@@ -100,26 +101,11 @@ if (isset($_SESSION["cart"])) {
 
 								<div class="collapse navbar-collapse clearfix" id="navbarSupportedContent">
 									<ul class="navigation clearfix">
-										<li class="current dropdown"><a href="#">Home</a>
-											<ul>
-												<li><a href="index.php">Home Page</a></li>
-												<li class="dropdown"><a href="#">Other</a>
-													<ul>
-														<li><a href="#">Sub Menu01</a></li>
-													</ul>
-												</li>
-											</ul>
+										<li class="current dropdown"><a href="./index.php">Home</a>
 										</li>
 
 
 										<li><a href="gallery.html">Gallery</a></li>
-
-										<li class="dropdown"><a href="#">User</a>
-											<ul>
-												<li><a href="login.html">Login</a></li>
-												<li><a href="registration.html">Register</a></li>
-											</ul>
-										</li>
 										<li><a href="about.html">About Us</a></li>
 										<li><a href="contact.html">Contact</a></li>
 									</ul>
@@ -160,28 +146,12 @@ if (isset($_SESSION["cart"])) {
 
 							<div class="navbar-collapse collapse clearfix" id="navbarSupportedContent1">
 								<ul class="navigation clearfix">
-									<li class="current dropdown"><a href="#">Home</a>
-										<ul>
-											<li><a href="index.php">Home Page 01</a></li>
-											<li class="dropdown"><a href="#">Other</a>
-												<ul>
-													<li><a href="#">Sub Menu01</a></li>
-													<li><a href="#">Sub Menu02</a></li>
-													<li><a href="#">Sub Menu03</a></li>
-												</ul>
-											</li>
-										</ul>
+									<li class="current dropdown"><a href="./index.php">Home</a>
+										
 									</li>
 
 
 									<li><a href="gallery.html">Gallery</a></li>
-
-									<li class="dropdown"><a href="#">User</a>
-										<ul>
-											<li><a href="shops.html">Login</a></li>
-											<li><a href="shop-single.html">Register</a></li>
-										</ul>
-									</li>
 									<li><a href="about.html">About Us</a></li>
 									<li><a href="contact.html">Contact</a></li>
 								</ul>

@@ -2,6 +2,8 @@
 include "header.php";
 include "slider.php";
 include "../admin/connections.php";
+
+$_SESSION['logged_in'] = false;
 ?>
 
 <!--================Slider Area =================-->

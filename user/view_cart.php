@@ -10,9 +10,12 @@ include "header.php";
 </section>
 <!-- End Page Title -->
 
+
 <?php
+
+
 if (load_cart_data() > 0) {
-	?>
+?>
 
 	<section class="cart-section">
 		<div class="auto-container">
@@ -74,19 +77,18 @@ if (load_cart_data() > 0) {
 								}
 
 								//echo $nm_session."++".$qty_total_session;
-								?>
+							?>
 
 								<?php
 								if ($img_session != "" && $img_session != null) {
 									$count = $count + 1;
 									$grand_total = $grand_total + ($price_session * $qty_total_session)
 
-										?>
+								?>
 									<tr>
 										<td class="prod-column">
 											<div class="column-box">
-												<figure class="prod-thumb"><a href="#"><img
-															src="../admin/<?php echo $img_session ?>" alt=""></a></figure>
+												<figure class="prod-thumb"><a href="#"><img src="../admin/<?php echo $img_session ?>" alt=""></a></figure>
 											</div>
 										</td>
 										<!-- food description -->
@@ -100,27 +102,23 @@ if (load_cart_data() > 0) {
 											<?php echo $price_session ?>
 										</td>
 										<td class="qty">
-											<div class="item-quantity"><input class="quantity-spinner" type="text"
-													id="qty<?php echo $i; ?>" value="<?php echo $qty_total_session ?>"
-													name="quantity"></div>
+											<div class="item-quantity"><input class="quantity-spinner" type="text" id="qty<?php echo $i; ?>" value="<?php echo $qty_total_session ?>" name="quantity"></div>
 										</td>
 										<td class="price">$
 											<?php echo $price_session * $qty_total_session ?>
 										</td>
-										<td><a href="#" class="remove-btn" style="float: left; "
-												onclick="delete_product('<?php echo $tb_id_session ?>')">
+										<td><a href="#" class="remove-btn" style="float: left; " onclick="delete_product('<?php echo $tb_id_session ?>')">
 												<span class="fa fa-times"></span>
 											</a>
-											<a href="#" class="remove-btn" style="float: right; "
-												onclick="update_product('<?php echo $tb_id_session ?>','<?php echo $i ?>')">
+											<a href="#" class="remove-btn" style="float: right; " onclick="update_product('<?php echo $tb_id_session ?>','<?php echo $i ?>')">
 												<span class="fa fa-refresh"></span>
 											</a>
 										</td>
 									</tr>
-									<?php
+								<?php
 								}
 								?>
-								<?php
+							<?php
 							}
 							?>
 
@@ -162,12 +160,30 @@ if (load_cart_data() > 0) {
 									<?php echo $grand_total ?>
 								</span>
 							</li>
-							<li class="text-right"> 
-								<div id="paypal-button-container"></div>
-								<!-- Replace the "test" client-id value with your client-id -->
-								<script
-									src="https://www.paypal.com/sdk/js?client-id=AZIAy3XqY0AMS8N3PFiUU0TYxAe0Z-eEH_ouHjuVy57TWVaHIekn0WehBlEXn7Yzbit6CysUC225JaAE&currency=USD"></script>
-								<script src="app.js"></script>
+							<li class="text-right">
+								<?php
+								// Check if the user is logged in
+								if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
+								?>
+									<div id="paypal-button-container"></div>
+									<!-- Replace the "test" client-id value with your client-id -->
+									<script src="https://www.paypal.com/sdk/js?client-id=AZIAy3XqY0AMS8N3PFiUU0TYxAe0Z-eEH_ouHjuVy57TWVaHIekn0WehBlEXn7Yzbit6CysUC225JaAE&currency=USD"></script>
+									<script src="app.js"></script>
+								<?php
+								} else {
+									// Guest or user not logged in, show an alert and stay on the current page
+								?>
+									<script>
+										function showLoginAlert() {
+											alert("You need to be logged in to proceed with the payment.");
+											window.location.href = "login.php";
+										}
+									</script>
+									<button class="theme-btn btn-style-five cart-btn" onclick="showLoginAlert()">Proceed to Payment</button>
+								<?php
+								}
+								?>
+
 							</li>
 						</ul>
 					</div>
@@ -177,7 +193,7 @@ if (load_cart_data() > 0) {
 		</div>
 	</section>
 
-	<?php
+<?php
 } else {
 	echo "<div style='height: 20px; width: 100%; text-align: center;'>";
 	echo "<h4> No Product available in Cart</h4>";
@@ -230,20 +246,20 @@ function load_cart_data()
 			});
 		},
 		onApprove: (data, actions) => {
-			return actions.order.capture().then(function (orderData) {
+			return actions.order.capture().then(function(orderData) {
 				console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
 				const transaction = orderData.purchase_units[0].payments.captures[0];
-          		alert(`Transaction ${transaction.status}: ${transaction.id} \n See console for all available details`);
-				
-				
+				alert(`Transaction ${transaction.status}: ${transaction.id} \n See console for all available details`);
+
+
 
 				$.ajax({
 					method: "POST",
 					url: "url",
 					data: "data",
 					dataType: "dataType",
-					success: function (response) {
-						
+					success: function(response) {
+
 					}
 				});
 			});
@@ -254,7 +270,7 @@ function load_cart_data()
 <script type="text/javascript">
 	function delete_product(tb_id) {
 		var xmlhttp1 = new XMLHttpRequest();
-		xmlhttp1.onreadystatechange = function () {
+		xmlhttp1.onreadystatechange = function() {
 			if (xmlhttp1.readyState == 4 && xmlhttp1.status == 200) {
 				window.location = "view_cart.php";
 			}
@@ -262,11 +278,12 @@ function load_cart_data()
 		xmlhttp1.open("GET", "delete_from_cart.php?tb_id=" + tb_id, true);
 		xmlhttp1.send();
 	}
+
 	function update_product(tb_id, qtyid) {
 		var qty = "qty" + qtyid;
 		var qty1 = document.getElementById(qty).value;
 		var xmlhttp1 = new XMLHttpRequest();
-		xmlhttp1.onreadystatechange = function () {
+		xmlhttp1.onreadystatechange = function() {
 			if (xmlhttp1.readyState == 4 && xmlhttp1.status == 200) {
 				alert("Cart Updated Successfully")
 				window.location = "view_cart.php";
