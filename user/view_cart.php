@@ -1,5 +1,5 @@
 <?php
-include "header.php";
+include_once "header.php";
 ?>
 
 <!-- Page Title -->
@@ -19,7 +19,7 @@ if (load_cart_data() > 0) {
 
 	<section class="cart-section">
 		<div class="auto-container">
-
+as
 			<!--Cart Outer-->
 			<div class="cart-outer">
 				<div class="table-outer">
@@ -56,22 +56,27 @@ if (load_cart_data() > 0) {
 									foreach ($_SESSION["cart"][$i] as $key => $val) {
 										if ($key == "img1") {
 											$img_session = $val;
+											echo "<script>console.log('$img_session and hello');</script>";
 										}
 										if ($key == "nm") {
 											$nm_session = $val;
+											echo "<script>console.log('$nm_session and hello');</script>";
 										}
 										if ($key == "price") {
 											$price_session = $val;
+											echo "<script>console.log('$price_session and hello');</script>";
 										}
 										if ($key == "qty_total") {
 											$qty_total_session = $val;
+											echo "<script>console.log('$qty_total_session and hello');</script>";
 										}
 										if ($key == "tb_id") {
 											$tb_id_session = $val;
+											echo "<script>console.log('$tb_id_session and tb_id_session');</script>";
 										}
-
 										if ($key == "unit") {
 											$unit_session = $val;
+											echo "<script>console.log('$unit_session and hello');</script>";
 										}
 									}
 								}
@@ -162,12 +167,13 @@ if (load_cart_data() > 0) {
 							</li>
 							<li class="text-right">
 								<?php
+								
 								// Check if the user is logged in
 								if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
 								?>
 									<div id="paypal-button-container"></div>
 									<!-- Replace the "test" client-id value with your client-id -->
-									<script src="https://www.paypal.com/sdk/js?client-id=AZIAy3XqY0AMS8N3PFiUU0TYxAe0Z-eEH_ouHjuVy57TWVaHIekn0WehBlEXn7Yzbit6CysUC225JaAE&currency=USD"></script>
+									<script src="https://www.paypal.com/sdk/js?client-id=AW2k4BiGzM3peFK14kWHK1cWKdHCTVqc-AoiSrc8lW2KclWoSB-IwmbwyroBQfzYxWpPxyZxts8ZyLF_&currency=USD"></script>
 									<script src="app.js"></script>
 								<?php
 								} else {
@@ -192,7 +198,7 @@ if (load_cart_data() > 0) {
 
 		</div>
 	</section>
-
+	
 <?php
 } else {
 	echo "<div style='height: 20px; width: 100%; text-align: center;'>";
@@ -247,19 +253,20 @@ function load_cart_data()
 		},
 		onApprove: (data, actions) => {
 			return actions.order.capture().then(function(orderData) {
-				console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+				// console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
 				const transaction = orderData.purchase_units[0].payments.captures[0];
 				alert(`Transaction ${transaction.status}: ${transaction.id} \n See console for all available details`);
 
-
-
 				$.ajax({
 					method: "POST",
-					url: "url",
-					data: "data",
-					dataType: "dataType",
+					url: "checkout.php",
+					data: { 
+						transactionId: transaction.id,
+						grand_total: <?= $grand_total ?>
+					},
 					success: function(response) {
-
+						console.log('success', transaction.id);
+						// window.location.href = "index.php";
 					}
 				});
 			});

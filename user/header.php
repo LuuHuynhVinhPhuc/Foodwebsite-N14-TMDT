@@ -5,6 +5,7 @@ $max = 0;
 if (isset($_SESSION["cart"])) {
 	$max = sizeof($_SESSION["cart"]);
 }
+
 ?>
 
 <!DOCTYPE html>
