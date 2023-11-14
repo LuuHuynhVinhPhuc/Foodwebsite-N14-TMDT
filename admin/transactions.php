@@ -33,9 +33,6 @@ include "header.php";
                             echo "<td>"; echo $row["final_price"]; echo "</td>";
                             echo "<td>"; ?><a href="edit_food.php?id=<?php echo $row["id"] ?>"
                             style="color: green;">Edit</a> <?php echo "</td>";
-                            echo "<td>"; ?><a onclick="confirmDelete(<?php echo $count ?>, <?php echo $row["id"] ?>)"
-                            style="color: red; cursor: pointer">Delete</a> 
-                            <?php echo "</td>";
                             echo "</tr>";
                          }
                     ?>

@@ -1,10 +1,10 @@
 <?php
 session_start();
-include "header2.php";
+include_once "header2.php";
 include "slider.php";
 include "../admin/connections.php";
 
-unset($_SESSION['uname']);
+// unset($_SESSION['uname']);
 
 // check is sign in or not 
 if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {

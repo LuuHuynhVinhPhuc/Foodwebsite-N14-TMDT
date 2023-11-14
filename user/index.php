@@ -1,5 +1,5 @@
 <?php
-include "header.php";
+include_once "header.php";
 include "slider.php";
 include "../admin/connections.php";
 
