@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 11, 2023 at 09:21 AM
+-- Generation Time: Nov 14, 2023 at 02:23 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -140,9 +140,9 @@ INSERT INTO `food_ingredients` (`id`, `food_ingredient`, `approved`) VALUES
 --
 
 CREATE TABLE `receipt` (
-  `id` int(10) UNSIGNED NOT NULL,
+  `id` varchar(255) NOT NULL,
   `customer_name` varchar(255) NOT NULL,
-  `date_time` datetime NOT NULL,
+  `date_time` varchar(255) NOT NULL,
   `total_price` decimal(10,2) NOT NULL,
   `voucher_discount` decimal(10,2) NOT NULL,
   `final_price` decimal(10,2) NOT NULL
@@ -153,9 +153,7 @@ CREATE TABLE `receipt` (
 --
 
 INSERT INTO `receipt` (`id`, `customer_name`, `date_time`, `total_price`, `voucher_discount`, `final_price`) VALUES
-(1, 'John Doe', '2023-11-06 10:30:00', 50.00, 5.00, 45.00),
-(2, 'Jane Smith', '2023-11-06 11:15:00', 75.00, 10.00, 65.00),
-(3, 'Bob Johnson', '2023-11-06 12:00:00', 100.00, 15.00, 85.00);
+('7XT52708LX189801R', 'Marcus', 'Nov 14, 2023 20:11', 160.00, 0.00, 160.00);
 
 -- --------------------------------------------------------
 
@@ -165,23 +163,20 @@ INSERT INTO `receipt` (`id`, `customer_name`, `date_time`, `total_price`, `vouch
 
 CREATE TABLE `receipt_item` (
   `id` int(10) UNSIGNED NOT NULL,
-  `receipt_id` int(10) UNSIGNED NOT NULL,
+  `receipt_id` varchar(255) NOT NULL,
   `item_name` varchar(255) NOT NULL,
   `item_price` decimal(10,2) NOT NULL,
-  `quantity` int(10) UNSIGNED NOT NULL
+  `quantity` int(10) UNSIGNED NOT NULL,
+  `total_price` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `receipt_item`
 --
 
-INSERT INTO `receipt_item` (`id`, `receipt_id`, `item_name`, `item_price`, `quantity`) VALUES
-(1, 1, 'Shirt', 20.00, 2),
-(2, 1, 'Pants', 15.00, 1),
-(3, 2, 'Dress', 50.00, 1),
-(4, 2, 'Shoes', 25.00, 2),
-(5, 3, 'Suit', 75.00, 1),
-(6, 3, 'Tie', 25.00, 2);
+INSERT INTO `receipt_item` (`id`, `receipt_id`, `item_name`, `item_price`, `quantity`, `total_price`) VALUES
+(7, '7XT52708LX189801R', '123', 100.00, 1, 100.00),
+(8, '7XT52708LX189801R', 'testy', 30.00, 2, 60.00);
 
 -- --------------------------------------------------------
 
@@ -315,16 +310,10 @@ ALTER TABLE `food_ingredients`
   MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT for table `receipt`
---
-ALTER TABLE `receipt`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
 -- AUTO_INCREMENT for table `receipt_item`
 --
 ALTER TABLE `receipt_item`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `request`
