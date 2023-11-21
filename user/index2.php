@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once "header2.php";
+include "header2.php";
 include "slider.php";
 include "../admin/connections.php";
 

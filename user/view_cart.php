@@ -1,5 +1,6 @@
 <?php
-include_once "header.php";
+include "header.php";
+
 ?>
 
 <!-- Page Title -->
@@ -11,15 +12,16 @@ include_once "header.php";
 <!-- End Page Title -->
 
 
+
 <?php
 
 
 if (load_cart_data() > 0) {
-?>
+	?>
 
 	<section class="cart-section">
 		<div class="auto-container">
-as
+			as
 			<!--Cart Outer-->
 			<div class="cart-outer">
 				<div class="table-outer">
@@ -40,9 +42,12 @@ as
 							$max = 0;
 							$count = 0;
 							$grand_total = 0;
+							$final_total = 0;
 							if (isset($_SESSION["cart"])) {
 								$max = sizeof($_SESSION["cart"]);
 							}
+
+
 
 							for ($i = 0; $i < $max; $i++) {
 								if (isset($_SESSION["cart"][$i])) {
@@ -82,18 +87,26 @@ as
 								}
 
 								//echo $nm_session."++".$qty_total_session;
-							?>
+								?>
 
 								<?php
+								if (isset($_SESSION["coupon_discount"])) {
+									$coupon_discount = $_SESSION["coupon_discount"];
+								}
+								else $coupon_discount = 0;
 								if ($img_session != "" && $img_session != null) {
 									$count = $count + 1;
-									$grand_total = $grand_total + ($price_session * $qty_total_session)
-
-								?>
+									$grand_total = $grand_total + ($price_session * $qty_total_session);
+									if (isset($_SESSION["final_total"])) {
+										$final_total = $_SESSION["final_total"];
+									}
+									else $final_total = $grand_total;
+									?>
 									<tr>
 										<td class="prod-column">
 											<div class="column-box">
-												<figure class="prod-thumb"><a href="#"><img src="../admin/<?php echo $img_session ?>" alt=""></a></figure>
+												<figure class="prod-thumb"><a href="#"><img
+															src="../admin/<?php echo $img_session ?>" alt=""></a></figure>
 											</div>
 										</td>
 										<!-- food description -->
@@ -107,23 +120,27 @@ as
 											<?php echo $price_session ?>
 										</td>
 										<td class="qty">
-											<div class="item-quantity"><input class="quantity-spinner" type="text" id="qty<?php echo $i; ?>" value="<?php echo $qty_total_session ?>" name="quantity"></div>
+											<div class="item-quantity"><input class="quantity-spinner" type="text"
+													id="qty<?php echo $i; ?>" value="<?php echo $qty_total_session ?>"
+													name="quantity"></div>
 										</td>
 										<td class="price">$
 											<?php echo $price_session * $qty_total_session ?>
 										</td>
-										<td><a href="#" class="remove-btn" style="float: left; " onclick="delete_product('<?php echo $tb_id_session ?>')">
+										<td><a href="#" class="remove-btn" style="float: left; "
+												onclick="delete_product('<?php echo $tb_id_session ?>')">
 												<span class="fa fa-times"></span>
 											</a>
-											<a href="#" class="remove-btn" style="float: right; " onclick="update_product('<?php echo $tb_id_session ?>','<?php echo $i ?>')">
+											<a href="#" class="remove-btn" style="float: right; "
+												onclick="update_product('<?php echo $tb_id_session ?>','<?php echo $i ?>')">
 												<span class="fa fa-refresh"></span>
 											</a>
 										</td>
 									</tr>
-								<?php
+									<?php
 								}
 								?>
-							<?php
+								<?php
 							}
 							?>
 
@@ -135,58 +152,70 @@ as
 				<div class="cart-options clearfix">
 					<div class="pull-left">
 						<div class="apply-coupon clearfix">
-							<div class="form-group clearfix">
-								<input type="text" name="coupon-code" value="" placeholder="Coupon Code">
-							</div>
-							<div class="form-group clearfix">
-								<button type="button" class="theme-btn coupon-btn">Apply Coupon</button>
-							</div>
+							<form action="coupon_check.php" name="form1" method="post" novalidate="novalidate">
+								<div class="form-group clearfix">
+									<input type="text" name="coupon_code" class="form-control" value="" placeholder="Coupon Code">
+								</div>
+								<div class="form-group">
+									<button type="submit" name="submit1" class="btn btn-lg btn-block theme-btn coupon-btn">
+										<span>
+											Apply Coupon
+										</span>
+									</button>
+								</div>
+								<input type="hidden" name="coupon_discount" value="<?= $coupon_discount ?>">
+								<input type="hidden" name="final_total" value="<?= $final_total ?>">
+							</form>
 						</div>
 					</div>
-
-					<div class="pull-right">
-						<button type="button" class="theme-btn btn-style-five cart-btn"><span class="txt">Add to
-								cart</span></button>
-					</div>
-
 				</div>
 
 				<div class="row clearfix">
-
 					<div class="column col-lg-7 col-md-12 col-sm-12"></div>
-
 					<div class="column pull-right col-lg-5 col-md-12 col-sm-12">
 						<!--Totals Table-->
 						<ul class="totals-table">
 							<li>
 								<h3>Cart Totals</h3>
 							</li>
-							<li class="clearfix total"><span class="col">Total</span><span class="col price">$
+							<li class="clearfix total"><span class="col">Total</span>
+								<span class="col price">$
 									<?php echo $grand_total ?>
+								</span>
+							</li>
+							<li class="clearfix total"><span class="col">Discount</span>
+								<span class="col price">$
+									<?php echo $coupon_discount ?>
+								</span>
+							</li>
+							<li class="clearfix total"><span class="col">You Pay:</span>
+								<span class="col price">$
+									<?php echo $final_total ?>
 								</span>
 							</li>
 							<li class="text-right">
 								<?php
-								
+
 								// Check if the user is logged in
 								if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
-								?>
+									?>
 									<div id="paypal-button-container"></div>
 									<!-- Replace the "test" client-id value with your client-id -->
-									<script src="https://www.paypal.com/sdk/js?client-id=AW2k4BiGzM3peFK14kWHK1cWKdHCTVqc-AoiSrc8lW2KclWoSB-IwmbwyroBQfzYxWpPxyZxts8ZyLF_&currency=USD"></script>
-									<script src="app.js"></script>
-								<?php
+									<script
+										src="https://www.paypal.com/sdk/js?client-id=Ae86PU_IaJlYVlNvxPxIp-j_jn3WDTE0om1tSG_5saV9lVm30tGlueTVlVGpYfmTIjtqUaxl8BnKBQXj&currency=USD"></script>
+									<?php
 								} else {
 									// Guest or user not logged in, show an alert and stay on the current page
-								?>
+									?>
 									<script>
 										function showLoginAlert() {
 											alert("You need to be logged in to proceed with the payment.");
 											window.location.href = "login.php";
 										}
 									</script>
-									<button class="theme-btn btn-style-five cart-btn" onclick="showLoginAlert()">Proceed to Payment</button>
-								<?php
+									<button class="theme-btn btn-style-five cart-btn" onclick="showLoginAlert()">Proceed to
+										Payment</button>
+									<?php
 								}
 								?>
 
@@ -198,8 +227,8 @@ as
 
 		</div>
 	</section>
-	
-<?php
+
+	<?php
 } else {
 	echo "<div style='height: 20px; width: 100%; text-align: center;'>";
 	echo "<h4> No Product available in Cart</h4>";
@@ -246,13 +275,13 @@ function load_cart_data()
 			return actions.order.create({
 				purchase_units: [{
 					amount: {
-						value: '<?= $grand_total ?>'
+						value: '<?= $final_total ?>'
 					}
 				}]
 			});
 		},
 		onApprove: (data, actions) => {
-			return actions.order.capture().then(function(orderData) {
+			return actions.order.capture().then(function (orderData) {
 				// console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
 				const transaction = orderData.purchase_units[0].payments.captures[0];
 				alert(`Transaction ${transaction.status}: ${transaction.id} \n See console for all available details`);
@@ -260,11 +289,13 @@ function load_cart_data()
 				$.ajax({
 					method: "POST",
 					url: "checkout.php",
-					data: { 
+					data: {
 						transactionId: transaction.id,
-						grand_total: <?= $grand_total ?>
+						grand_total: <?= $grand_total; ?>,
+						coupon_discount: <?= $coupon_discount; ?>,
+						final_total: <?= $final_total; ?>,
 					},
-					success: function(response) {
+					success: function (response) {
 						console.log('success', transaction.id);
 						// window.location.href = "index.php";
 					}
@@ -277,7 +308,7 @@ function load_cart_data()
 <script type="text/javascript">
 	function delete_product(tb_id) {
 		var xmlhttp1 = new XMLHttpRequest();
-		xmlhttp1.onreadystatechange = function() {
+		xmlhttp1.onreadystatechange = function () {
 			if (xmlhttp1.readyState == 4 && xmlhttp1.status == 200) {
 				window.location = "view_cart.php";
 			}
@@ -290,7 +321,7 @@ function load_cart_data()
 		var qty = "qty" + qtyid;
 		var qty1 = document.getElementById(qty).value;
 		var xmlhttp1 = new XMLHttpRequest();
-		xmlhttp1.onreadystatechange = function() {
+		xmlhttp1.onreadystatechange = function () {
 			if (xmlhttp1.readyState == 4 && xmlhttp1.status == 200) {
 				alert("Cart Updated Successfully")
 				window.location = "view_cart.php";
@@ -300,6 +331,7 @@ function load_cart_data()
 		xmlhttp1.send();
 	}
 </script>
+
 
 <script src="assets/js/jquery.js"></script>
 <script src="assets/js/parallax.min.js"></script>

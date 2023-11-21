@@ -1,18 +1,16 @@
 <?php
-include "connections.php";
+include "../admin/connections.php";
 ?>
 
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
-<!--[if gt IE 8]><!-->
-<html class="no-js" lang=""> <!--<![endif]-->
-
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>MacDonalds - Quản Lý</title>
+   <title>MacDonalds - Quản Lý</title>
     <meta name="description" content="MacDonalds - Quản Lý">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -33,16 +31,13 @@ include "connections.php";
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
 
 </head>
-
 <body class="bg-dark">
-
-
     <div class="sufee-login d-flex align-content-center flex-wrap">
         <div class="container">
             <div class="login-content">
                 <div class="login-logo">
                     <a href="index.html">
-                        Nhân viên
+                        Công ty
                     </a>
                 </div>
                 <div class="login-form">
@@ -55,26 +50,8 @@ include "connections.php";
                             <label>Mật khẩu</label>
                             <input type="password" class="form-control" name="password" required>
                         </div>
-
-                        <div class="form-group">
-                            <button type="submit" name="submit1" class="btn btn-success btn-flat mt-8 mb-8">Sign
-                                in</button>
-                        </div>
-                        <div class="form-group">
-                            <a href="../corpo/index.php" class="btn btn-primary btn-flat m-b-30 m-t-30">
-                                Click here to go to corporation page
-                            </a>
-                        </div>
-                        <div class="form-group">
-                            <a href="../user/index.php" class="btn btn-warning btn-flat m-b-30 m-t-30">
-                                Click here to return to main (user) page
-                            </a>
-                        </div>
-
-
-
-                        <div class="alert alert-danger" id="invalid" role="alert"
-                            style="margin-top: 20px; display: none;">
+                        <button type="submit" name="submit1" class="btn btn-success btn-flat m-b-30 m-t-30">Sign in</button>
+                        <div class="alert alert-danger" id="invalid" role="alert" style="margin-top: 20px; display: none;">
                             Sai tên đăng nhập hoặc mật khẩu
                         </div>
                     </form>
@@ -89,28 +66,29 @@ include "connections.php";
     <script src="assets/js/plugins.js"></script>
     <script src="assets/js/main.js"></script>
 
-    <?php
+<?php
 
-    if (isset($_POST["submit1"])) {
-        $count = 0;
-        $res = mysqli_query($link, "select * from admin_login where username = '$_POST[username]' and password = '$_POST[password]'");
-        $count = mysqli_num_rows($res);
-        if ($count == 0) {
-            ?>
-            <script type="text/javascript">
-                document.getElementById("invalid").style.display = "block";
-            </script>
-            <?php
-        } else {
-            ?>
-            <script type="text/javascript">
-                window.location = "demo.php";
-            </script>
-            <?php
-        }
+if (isset($_POST["submit1"])) {
+    $count = 0;
+    $res = mysqli_query($link, "select * from admin_login where username = '$_POST[username]' and password = '$_POST[password]'");
+    $count = mysqli_num_rows($res);
+    if ($count == 0) {
+        ?>
+        <script type="text/javascript">
+            document.getElementById("invalid").style.display = "block";
+        </script>
+        <?php
     }
-    ?>
+
+    else {
+        ?>
+        <script type="text/javascript">
+            window.location="demo.php";
+        </script>
+        <?php
+    }
+}
+?>
 
 </body>
-
 </html>

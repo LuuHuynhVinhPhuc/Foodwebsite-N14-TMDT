@@ -6,13 +6,14 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <title>MacDonalds - Quản lý</title>
+    <title>MacDonalds - Quản lý</title>
     <meta name="description" content="Sufee Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="apple-touch-icon" href="apple-icon.png">
     <link rel="shortcut icon" href="favicon.ico">
 
+    <script src="https://kit.fontawesome.com/fba0e88a72.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../admin/assets/css/normalize.css">
     <link rel="stylesheet" href="../admin/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="../admin/assets/css/font-awesome.min.css">
@@ -49,23 +50,27 @@
                     <li class="active">
                         <a href="dashboard.php"> <i class="menu-icon fa fa-dashboard"></i>Dashboard</a>
                     </li>
-                    <li>
-                        <a href="food_categories.php"> <i class="menu-icon fa fa-dashboard"></i>Add / Edit Categories</a>
-                    </li>
-                    <li>
-                        <a href="food_ingredients.php"> <i class="menu-icon fa fa-dashboard"></i>Add / Edit Ingredients</a>
-                    </li>
-                    <li>
-                        <a href="transactions.php"><i class="menu-icon fa fa-dashboard"></i>Transactions History</a>
-                    </li>
                     <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-slice"></i>Food</a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="menu-icon fa-solid fa-code-branch"></i>Branch</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="menu-icon fa fa-th"></i><a href="add_food.php">Add Food</a></li>
-                            <li><i class="menu-icon fa fa-th"></i><a href="display_food.php">Display Food</a></li>
+                            <li><i class="menu-icon fa-solid fa-plus"></i><a href="add_branch.php">Add Branch</a></li>
+                            <li><i class="menu-icon fa-solid fa-display"></i><a href="display_branch.php">Branch List</a></li>
                         </ul>
                     </li>
-
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="menu-icon fa fa-user"></i>Employees</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="menu-icon fa-solid fa-plus"></i><a href="employee.php">Add Employee</a></li>
+                            <li><i class="menu-icon fa-solid fa-display"></i><a href="display_branch.php">Employees List</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="voucher.php"><i class="menu-icon fa-solid fa-gifts"></i>Voucher</a>
+                    </li>
+                    <li>
+                        <a href="request_manager.php"><i class="menu-icon fa-brands fa-buffer"></i>Manage Request</a>
+                    </li>
+I
                     <h3 class="menu-title">UI elements</h3><!-- /.menu-title -->
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Components</a>
