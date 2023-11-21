@@ -3,25 +3,6 @@ include "../admin/connections.php";
 include "header.php";
 ?>
 
-<!--content area-->
-<div class="breadcrumbs">
-    <div class="col-sm-4">
-        <div class="page-header float-left">
-            <div class="page-title">
-                <h1>Available Branch</h1>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-8">
-        <div class="page-header float-right">
-            <div class="page-title">
-                Hi
-            </div>
-        </div>
-    </div>
-</div>
-<!--end: content area-->
-
 <div class="col-lg-12">
     <div class="card">
         <div class="card-body">
@@ -54,9 +35,9 @@ include "header.php";
                             echo "<td>"; echo $row["email_address"]; echo "</td>";
                             echo "<td>"; echo $row["opening_hours"]; echo "</td>";
                             echo "<td>"; echo $row["closing_hours"]; echo "</td>";
-                            echo "<td>"; ?><a href="edit_branch.php?id=<?php echo $row["id"] ?>"
-                            style="color: green;">Edit</a> <?php echo "</td>";
-                            echo "<td>"; ?><a onclick="confirmDelete(<?php echo $count ?>, <?php echo $row["id"] ?>)" 
+                            echo "<td>"; ?><a href="edit_branch.php?id=<?php echo $row["branch_number"] ?>"
+                            style="color: green;">Edit (Not work)</a> <?php echo "</td>";
+                            echo "<td>"; ?><a onclick="confirmDelete(<?php echo $count ?>, <?php echo $row["branch_number"] ?>)" 
                             style="color: red; cursor: pointer">Delete</a> 
                             <?php echo "</td>";
                             echo "</tr>";
@@ -70,9 +51,9 @@ include "header.php";
 
 <script type="text/javascript">
 function confirmDelete(id, rid) {
-  var result = confirm("Are you sure you want to delete food number " + id + "?");
+  var result = confirm("Are you sure you want to delete branch number " + id + "?");
   if (result) {
-    window.location.href = "delete_food.php?id=" + rid;
+    window.location.href = "delete_branch.php?id=" + rid;
   }
 }
 </script>

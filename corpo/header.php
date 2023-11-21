@@ -61,7 +61,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="menu-icon fa fa-user"></i>Employees</a>
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="menu-icon fa-solid fa-plus"></i><a href="employee.php">Add Employee</a></li>
-                            <li><i class="menu-icon fa-solid fa-display"></i><a href="display_branch.php">Employees List</a></li>
+                            <li><i class="menu-icon fa-solid fa-display"></i><a href="employee.php">Employees List</a></li>
                         </ul>
                     </li>
                     <li>
