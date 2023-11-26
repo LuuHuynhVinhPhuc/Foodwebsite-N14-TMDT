@@ -132,6 +132,16 @@ include "header.php";
                             style="color: green;">Request</a> <?php echo "</td>";
                             echo "</tr>";
                          }
+                         $res = mysqli_query($link, "select * from food_ingredients where approved = 'waiting'");
+                         while ($row = mysqli_fetch_array($res))
+                         {
+                            $count = $count + 1;
+                            echo "<tr>";
+                            echo "<td> $count </td>";
+                            echo "<td>"; echo $row["food_ingredient"]; echo "</td>";
+                            echo "<td>"; ?> Requested <?php echo "</td>";
+                            echo "</tr>";
+                         }
                     ?>
                 </tbody>
             </table>
@@ -143,17 +153,18 @@ include "header.php";
 //logic nút submit
 if (isset($_POST["submit1"])) {
     $count = 0;
-    $res = mysqli_query($link, "SELECT * FROM food_ingredients WHERE food_ingredient='$_POST[food_ingredient]'") or die(mysqli_error($link));
+    $res = mysqli_query($link, "SELECT * FROM food_ingredients WHERE food_ingredient='$_POST[food_ingredient]'")
+    or die(mysqli_error($link));
     $count = mysqli_num_rows($res);
     if ($count > 0) {
         ?>
         <script type="text/javascript">
             document.getElementById("error").style.display = "block";
             document.getElementById("success").style.display = "none";
-        </script>
+        </script>   
         <?php
     } else {
-        mysqli_query($link, "insert into food_ingredients values(NULL, '$_POST[food_ingredient]')") or die(mysqli_error($link));
+        mysqli_query($link, "insert into food_ingredients values(NULL, '$_POST[food_ingredient]', 'no')") or die(mysqli_error($link));
         ?>
         <script type="text/javascript">
             document.getElementById("error").style.display = "none";

@@ -1,17 +1,9 @@
 <?php
-session_start();
-include "header2.php";
-include "slider.php";
-include "../admin/connections.php";
+include_once "./user/header.php";
+include "./user/slider.php";
+include "./admin/connections.php";
 
-// unset($_SESSION['uname']);
-
-// check is sign in or not 
-if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
-    header('Location: login.php');
-    exit();
-}
-
+$_SESSION['logged_in'] = false;
 ?>
 
 <!--================Slider Area =================-->
@@ -263,7 +255,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
 
                 <!-- Products Block -->
                 <?php
-                $res = mysqli_query($link, "select * from food");
+                $res = mysqli_query($link, "select * from food where approved = 'yes'");
                 while ($row = mysqli_fetch_array($res)) {
                     ?>
                     <div class="product-block all mix <?php echo $row["food_category"]; ?> salad fest wraps fries col-lg-3 col-md-6 col-sm-12">
@@ -305,7 +297,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
 <!-- to-do: add pointing system (no need exchange, just point & at certain points, let them have different member (silver member, gold member, etc)) -->
 
 <?php
-include "delivery.php";
-include "services_section.php";
-include "footer.php";
+include "./user/delivery.php";
+include "./user/services_section.php";
+include "./user/footer.php";
 ?>

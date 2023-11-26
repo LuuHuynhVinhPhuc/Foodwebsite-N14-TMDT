@@ -1,26 +1,7 @@
 <?php
-include "connections.php";
+include "../admin/connections.php";
 include "header.php";
 ?>
-
-<!--content area-->
-<div class="breadcrumbs">
-    <div class="col-sm-4">
-        <div class="page-header float-left">
-            <div class="page-title">
-                <h1>Available Branch</h1>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-8">
-        <div class="page-header float-right">
-            <div class="page-title">
-                Hi
-            </div>
-        </div>
-    </div>
-</div>
-<!--end: content area-->
 
 <div class="col-lg-12">
     <div class="card">
@@ -29,38 +10,34 @@ include "header.php";
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Food Image</th>
-                        <th scope="col">Food Name</th>
-                        <th scope="col">Food Category</th>
-                        <th scope="col">Food Description</th>
-                        <th scope="col">Original Price</th>
-                        <th scope="col">Discount Price</th>
-                        <th scope="col">Availability</th>
-                        <th scope="col">Vegetarian</th>
-                        <th scope="col">Ingredients</th>
+                        <th scope="col">Branch Name</th>
+                        <th scope="col">Manager</th>
+                        <th scope="col">Address</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Opening Hours</th>
+                        <th scope="col">Closing Hours</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
                     $count = 0;
-                         $res = mysqli_query($link, "select * from food");
+                         $res = mysqli_query($link, "select * from branch");
                          while ($row = mysqli_fetch_array($res))
                          {
                             $count = $count + 1;
                             echo "<tr>";
                             echo "<td> $count </td>";
-                            echo "<td>"; ?> <img src="<?php echo $row["food_image"]; ?>" alt=""> <?php echo "</td>";
-                            echo "<td>"; echo $row["food_name"]; echo "</td>";
-                            echo "<td>"; echo $row["food_category"]; echo "</td>";
-                            echo "<td>"; echo $row["food_description"]; echo "</td>";
-                            echo "<td>"; echo $row["food_original_price"]; echo "</td>";
-                            echo "<td>"; echo $row["food_discount_price"]; echo "</td>";
-                            echo "<td>"; echo $row["food_availability"]; echo "</td>";
-                            echo "<td>"; echo $row["food_veg_nonveg"]; echo "</td>";
-                            echo "<td>"; echo $row["food_ingredients"]; echo "</td>";
-                            echo "<td>"; ?><a href="edit_food.php?id=<?php echo $row["id"] ?>"
-                            style="color: green;">Edit</a> <?php echo "</td>";
-                            echo "<td>"; ?><a onclick="confirmDelete(<?php echo $count ?>, <?php echo $row["id"] ?>)" 
+                            echo "<td>"; echo $row["branch_name"]; echo "</td>";
+                            echo "<td>"; echo $row["branch_manager"]; echo "</td>";
+                            echo "<td>"; echo $row["address"]; echo "</td>";
+                            echo "<td>"; echo $row["phone_number"]; echo "</td>";
+                            echo "<td>"; echo $row["email_address"]; echo "</td>";
+                            echo "<td>"; echo $row["opening_hours"]; echo "</td>";
+                            echo "<td>"; echo $row["closing_hours"]; echo "</td>";
+                            echo "<td>"; ?><a href="edit_branch.php?id=<?php echo $row["branch_number"] ?>"
+                            style="color: green;">Edit (Not work)</a> <?php echo "</td>";
+                            echo "<td>"; ?><a onclick="confirmDelete(<?php echo $count ?>, <?php echo $row["branch_number"] ?>)" 
                             style="color: red; cursor: pointer">Delete</a> 
                             <?php echo "</td>";
                             echo "</tr>";
@@ -74,9 +51,9 @@ include "header.php";
 
 <script type="text/javascript">
 function confirmDelete(id, rid) {
-  var result = confirm("Are you sure you want to delete food number " + id + "?");
+  var result = confirm("Are you sure you want to delete branch number " + id + "?");
   if (result) {
-    window.location.href = "delete_food.php?id=" + rid;
+    window.location.href = "delete_branch.php?id=" + rid;
   }
 }
 </script>

@@ -9,7 +9,7 @@ $food_price = "";
 $food_ingredients = "";
 $food_category = "";
 
-$res = mysqli_query($link, "select * from food where id = $id and approved = 'yes'");
+$res = mysqli_query($link, "select * from food where id = $id");
 while ($row = mysqli_fetch_array($res)) {
     $food_name = $row["food_name"];
     $food_description = $row["food_description"];
@@ -91,7 +91,7 @@ $food_ingredients = str_replace(',', ', ', $food_ingredients);
 
             <!-- Products Block -->
             <?php
-            $res = mysqli_query($link, "select * from food where food_category = '$food_category' and id != $id");
+            $res = mysqli_query($link, "select * from food where food_category = '$food_category' and id != $id and approved = 'yes'");
             while ($row = mysqli_fetch_array($res)) {
                 ?>
                 <div class="product-block col-lg-3 col-md-6 col-sm-12">

@@ -3,6 +3,14 @@ include 'header.php';
 $uname = $_SESSION['uname'];
 $transactionId = $_POST['transactionId'];
 $grand_total = $_POST['grand_total'];
+$coupon_discount = $_POST['coupon_discount'];
+$final_total = $_POST['final_total'];
+
+if (isset($_SESSION["coupon_code"])) {
+    $coupon_code = $_SESSION["coupon_code"];
+    mysqli_query($link, "update voucher set use_count = use_count - 1 where voucher_code = '$coupon_code'") or die(mysqli_error($link));
+}
+
 if(!isset($transactionId) || !isset($_SESSION["cart"])) {
     header("index.php");
 }
@@ -12,11 +20,12 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
 $time = date('M d, Y G:i');
 
 $max = sizeof($_SESSION["cart"]);
+
 mysqli_query(
     $link,
     "INSERT INTO `receipt` 
 (`id`, `customer_name`, `date_time`, `total_price`, `voucher_discount`, `final_price`) 
-VALUES ('$transactionId', '$uname', '$time', '$grand_total', '0', '$grand_total')"
+VALUES ('$transactionId', '$uname', '$time', '$grand_total', '$coupon_discount', '$final_total')"
 ) or die(mysqli_error($link));
 
 for ($i = 0; $i < $max; $i++) {
@@ -49,6 +58,8 @@ for ($i = 0; $i < $max; $i++) {
         or die(mysqli_error($link));
     // mysqli_query($link, "insert ") or die(mysqli_error($link));
 }
-echo "success";
-echo 201;
+
+session_unset();
+
+header("Location: index.php");
 ?>

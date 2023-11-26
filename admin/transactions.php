@@ -10,6 +10,7 @@ include "header.php";
                 <thead>
                     <tr>
                         <th scope="col">#</th>
+                        <th scope="col">ID</th>
                         <th scope="col">Customer</th>
                         <th scope="col">Date</th>
                         <th scope="col">Price</th>
@@ -26,6 +27,7 @@ include "header.php";
                             $count = $count + 1;
                             echo "<tr>";
                             echo "<td> $count </td>";
+                            echo "<td>"; echo $row["id"]; echo "</td>";
                             echo "<td>"; echo $row["customer_name"]; echo "</td>";
                             echo "<td>"; echo $row["date_time"]; echo "</td>";
                             echo "<td>"; echo $row["total_price"]; echo "</td>";
