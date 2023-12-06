@@ -2,10 +2,11 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Nov 14, 2023 at 02:23 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Host: db
+-- Generation Time: Nov 26, 2023 at 03:47 PM
+-- Server version: 8.2.0
+-- PHP Version: 8.2.12
+
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,9 +29,9 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `admin_login` (
-  `id` int(5) NOT NULL,
-  `username` varchar(50) NOT NULL,
-  `password` varchar(50) NOT NULL
+  `id` int NOT NULL,
+  `username` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `password` varchar(50) COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -47,15 +48,67 @@ INSERT INTO `admin_login` (`id`, `username`, `password`) VALUES
 --
 
 CREATE TABLE `branch` (
-  `branch_number` int(11) NOT NULL,
-  `branch_name` varchar(255) NOT NULL,
-  `branch_manager` varchar(255) NOT NULL,
-  `address` varchar(255) NOT NULL,
-  `phone_number` varchar(20) NOT NULL,
-  `email_address` varchar(255) NOT NULL,
-  `opening_hours` varchar(255) NOT NULL,
-  `closing_hours` varchar(255) NOT NULL
+  `branch_number` int NOT NULL,
+  `branch_name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `branch_manager` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `address` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `phone_number` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
+  `email_address` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `opening_hours` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `closing_hours` varchar(255) COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `branch`
+--
+
+INSERT INTO `branch` (`branch_number`, `branch_name`, `branch_manager`, `address`, `phone_number`, `email_address`, `opening_hours`, `closing_hours`) VALUES
+(1, 'Main Branch', 'John Doe', '123 Main Street, Anytown, USA', '123-456-7890', 'main@example.com', '8:00 AM', '6:00 PM');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Employee`
+--
+
+CREATE TABLE `Employee` (
+  `ID` int NOT NULL,
+  `Name` varchar(255) NOT NULL,
+  `Email` varchar(50) NOT NULL,
+  `Phone` varchar(15) NOT NULL,
+  `Salary` decimal(10,2) DEFAULT NULL,
+  `Title` varchar(30) NOT NULL,
+  `Status` varchar(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `Employee`
+--
+
+INSERT INTO `Employee` (`ID`, `Name`, `Email`, `Phone`, `Salary`, `Title`, `Status`) VALUES
+(1, 'John Doe', 'john@example.com', '123-456-7890', 50000.00, 'Manager', 'Active'),
+(2, 'Jane Smith', 'jane@example.com', '987-654-3210', 60000.00, 'Supervisor', 'Active'),
+(3, 'Michael Johnson', 'michael@example.com', '111-222-3333', 55000.00, 'Associate', 'Inactive');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `EmployeeTitle`
+--
+
+CREATE TABLE `EmployeeTitle` (
+  `ID` int NOT NULL,
+  `Title` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `EmployeeTitle`
+--
+
+INSERT INTO `EmployeeTitle` (`ID`, `Title`) VALUES
+(1, 'Manager'),
+(2, 'Supervisor'),
+(3, 'Associate');
 
 -- --------------------------------------------------------
 
@@ -64,17 +117,17 @@ CREATE TABLE `branch` (
 --
 
 CREATE TABLE `food` (
-  `id` int(5) NOT NULL,
-  `food_name` varchar(50) NOT NULL,
-  `food_category` varchar(50) NOT NULL,
-  `food_description` varchar(500) NOT NULL,
-  `food_original_price` varchar(15) NOT NULL,
-  `food_discount_price` varchar(15) NOT NULL,
-  `food_availability` varchar(50) NOT NULL,
-  `food_veg_nonveg` varchar(10) NOT NULL,
-  `food_ingredients` varchar(1000) NOT NULL,
-  `food_image` varchar(500) NOT NULL,
-  `approved` varchar(50) NOT NULL DEFAULT 'no'
+  `id` int NOT NULL,
+  `food_name` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `food_category` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `food_description` varchar(500) COLLATE utf8mb4_general_ci NOT NULL,
+  `food_original_price` varchar(15) COLLATE utf8mb4_general_ci NOT NULL,
+  `food_discount_price` varchar(15) COLLATE utf8mb4_general_ci NOT NULL,
+  `food_availability` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `food_veg_nonveg` varchar(10) COLLATE utf8mb4_general_ci NOT NULL,
+  `food_ingredients` varchar(1000) COLLATE utf8mb4_general_ci NOT NULL,
+  `food_image` varchar(500) COLLATE utf8mb4_general_ci NOT NULL,
+  `approved` varchar(50) COLLATE utf8mb4_general_ci NOT NULL DEFAULT 'no'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -95,8 +148,8 @@ INSERT INTO `food` (`id`, `food_name`, `food_category`, `food_description`, `foo
 --
 
 CREATE TABLE `food_categories` (
-  `id` int(5) NOT NULL,
-  `food_category` varchar(100) NOT NULL
+  `id` int NOT NULL,
+  `food_category` varchar(100) COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -115,9 +168,9 @@ INSERT INTO `food_categories` (`id`, `food_category`) VALUES
 --
 
 CREATE TABLE `food_ingredients` (
-  `id` int(5) NOT NULL,
-  `food_ingredient` varchar(50) NOT NULL,
-  `approved` varchar(50) NOT NULL DEFAULT 'no'
+  `id` int NOT NULL,
+  `food_ingredient` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `approved` varchar(50) COLLATE utf8mb4_general_ci NOT NULL DEFAULT 'no'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -140,9 +193,9 @@ INSERT INTO `food_ingredients` (`id`, `food_ingredient`, `approved`) VALUES
 --
 
 CREATE TABLE `receipt` (
-  `id` varchar(255) NOT NULL,
-  `customer_name` varchar(255) NOT NULL,
-  `date_time` varchar(255) NOT NULL,
+  `id` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `customer_name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `date_time` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   `total_price` decimal(10,2) NOT NULL,
   `voucher_discount` decimal(10,2) NOT NULL,
   `final_price` decimal(10,2) NOT NULL
@@ -153,6 +206,7 @@ CREATE TABLE `receipt` (
 --
 
 INSERT INTO `receipt` (`id`, `customer_name`, `date_time`, `total_price`, `voucher_discount`, `final_price`) VALUES
+
 ('7XT52708LX189801R', 'Marcus', 'Nov 14, 2023 20:11', 160.00, 0.00, 160.00);
 
 -- --------------------------------------------------------
@@ -162,11 +216,11 @@ INSERT INTO `receipt` (`id`, `customer_name`, `date_time`, `total_price`, `vouch
 --
 
 CREATE TABLE `receipt_item` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `receipt_id` varchar(255) NOT NULL,
-  `item_name` varchar(255) NOT NULL,
+  `id` int UNSIGNED NOT NULL,
+  `receipt_id` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `item_name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   `item_price` decimal(10,2) NOT NULL,
-  `quantity` int(10) UNSIGNED NOT NULL,
+  `quantity` int UNSIGNED NOT NULL,
   `total_price` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -185,10 +239,10 @@ INSERT INTO `receipt_item` (`id`, `receipt_id`, `item_name`, `item_price`, `quan
 --
 
 CREATE TABLE `request` (
-  `request_no` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `request_type` varchar(255) NOT NULL,
-  `note` varchar(255) NOT NULL
+  `request_no` int NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `request_type` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `note` varchar(255) COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -205,13 +259,13 @@ INSERT INTO `request` (`request_no`, `name`, `request_type`, `note`) VALUES
 --
 
 CREATE TABLE `user` (
-  `ID` int(5) NOT NULL,
-  `Fname` text NOT NULL,
-  `Lname` text NOT NULL,
-  `Uname` text NOT NULL,
-  `Password` text NOT NULL,
-  `Email` text NOT NULL,
-  `Contact` text NOT NULL
+  `ID` int NOT NULL,
+  `Fname` text COLLATE utf8mb4_general_ci NOT NULL,
+  `Lname` text COLLATE utf8mb4_general_ci NOT NULL,
+  `Uname` text COLLATE utf8mb4_general_ci NOT NULL,
+  `Password` text COLLATE utf8mb4_general_ci NOT NULL,
+  `Email` text COLLATE utf8mb4_general_ci NOT NULL,
+  `Contact` text COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -228,10 +282,18 @@ INSERT INTO `user` (`ID`, `Fname`, `Lname`, `Uname`, `Password`, `Email`, `Conta
 --
 
 CREATE TABLE `voucher` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `voucher_code` varchar(255) DEFAULT NULL,
-  `discount` decimal(10,0) DEFAULT NULL
+  `id` int UNSIGNED NOT NULL,
+  `voucher_code` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `discount` decimal(10,0) DEFAULT NULL,
+  `use_count` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `voucher`
+--
+
+INSERT INTO `voucher` (`id`, `voucher_code`, `discount`, `use_count`) VALUES
+(1, '30SOFFi', 100, 29);
 
 --
 -- Indexes for dumped tables
@@ -242,6 +304,18 @@ CREATE TABLE `voucher` (
 --
 ALTER TABLE `branch`
   ADD PRIMARY KEY (`branch_number`);
+
+--
+-- Indexes for table `Employee`
+--
+ALTER TABLE `Employee`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `EmployeeTitle`
+--
+ALTER TABLE `EmployeeTitle`
+  ADD PRIMARY KEY (`ID`);
 
 --
 -- Indexes for table `food_categories`
@@ -285,7 +359,8 @@ ALTER TABLE `user`
 --
 ALTER TABLE `voucher`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `voucher_code` (`voucher_code`);
+  ADD UNIQUE KEY `voucher_code` (`voucher_code`),
+  ADD UNIQUE KEY `voucher_code_2` (`voucher_code`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -295,43 +370,56 @@ ALTER TABLE `voucher`
 -- AUTO_INCREMENT for table `branch`
 --
 ALTER TABLE `branch`
-  MODIFY `branch_number` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `branch_number` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `Employee`
+--
+ALTER TABLE `Employee`
+  MODIFY `ID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `EmployeeTitle`
+--
+ALTER TABLE `EmployeeTitle`
+  MODIFY `ID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `food_categories`
 --
 ALTER TABLE `food_categories`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `food_ingredients`
 --
 ALTER TABLE `food_ingredients`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
 
 --
 -- AUTO_INCREMENT for table `receipt_item`
 --
 ALTER TABLE `receipt_item`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `request`
 --
 ALTER TABLE `request`
-  MODIFY `request_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `request_no` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `ID` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `voucher`
 --
 ALTER TABLE `voucher`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables

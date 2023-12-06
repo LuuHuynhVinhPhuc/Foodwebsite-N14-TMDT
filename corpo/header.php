@@ -2,7 +2,9 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang=""> <!--<![endif]-->
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -29,19 +31,21 @@
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
 
 </head>
+
 <body>
 
 
-        <!-- Left Panel -->
+    <!-- Left Panel -->
 
     <aside id="left-panel" class="left-panel">
         <nav class="navbar navbar-expand-sm navbar-default">
 
             <div class="navbar-header">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu"
+                    aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>
                 </button>
-                 <a class="navbar-brand" href="./">Corps</a>
+                <a class="navbar-brand" href="./">Corps</a>
                 <a class="navbar-brand hidden" href="./">C</a>
             </div>
 
@@ -51,17 +55,21 @@
                         <a href="dashboard.php"> <i class="menu-icon fa fa-dashboard"></i>Dashboard</a>
                     </li>
                     <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="menu-icon fa-solid fa-code-branch"></i>Branch</a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false"><i class="menu-icon fa-solid fa-code-branch"></i>Branch</a>
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="menu-icon fa-solid fa-plus"></i><a href="add_branch.php">Add Branch</a></li>
-                            <li><i class="menu-icon fa-solid fa-display"></i><a href="display_branch.php">Branch List</a></li>
+                            <li><i class="menu-icon fa-solid fa-display"></i><a href="display_branch.php">Branch
+                                    List</a></li>
                         </ul>
                     </li>
                     <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="menu-icon fa fa-user"></i>Employees</a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false"><i class="menu-icon fa fa-user"></i>Employees</a>
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="menu-icon fa-solid fa-plus"></i><a href="employee.php">Add Employee</a></li>
-                            <li><i class="menu-icon fa-solid fa-display"></i><a href="employee.php">Employees List</a></li>
+                            <li><i class="menu-icon fa-solid fa-display"></i><a href="employee.php">Employees List</a>
+                            </li>
                         </ul>
                     </li>
                     <li>
@@ -70,10 +78,11 @@
                     <li>
                         <a href="request_manager.php"><i class="menu-icon fa-brands fa-buffer"></i>Manage Request</a>
                     </li>
-I
+
                     <h3 class="menu-title">UI elements</h3><!-- /.menu-title -->
                     <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Components</a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Components</a>
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="fa fa-puzzle-piece"></i><a href="ui-buttons.html">Buttons</a></li>
                         </ul>
@@ -100,7 +109,8 @@ I
                         <button class="search-trigger"><i class="fa fa-search"></i></button>
                         <div class="form-inline">
                             <form class="search-form">
-                                <input class="form-control mr-sm-2" type="text" placeholder="Search ..." aria-label="Search">
+                                <input class="form-control mr-sm-2" type="text" placeholder="Search ..."
+                                    aria-label="Search">
                                 <button class="search-close" type="submit"><i class="fa fa-close"></i></button>
                             </form>
                         </div>
@@ -111,7 +121,8 @@ I
 
                 <div class="col-sm-5">
                     <div class="user-area dropdown float-right">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
                             <img class="user-avatar rounded-circle" src="../admin/images/admin.jpg" alt="User Avatar">
                         </a>
                     </div>
