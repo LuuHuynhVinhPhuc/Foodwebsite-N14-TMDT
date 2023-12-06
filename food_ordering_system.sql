@@ -7,6 +7,7 @@
 -- Server version: 8.2.0
 -- PHP Version: 8.2.12
 
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
@@ -205,12 +206,8 @@ CREATE TABLE `receipt` (
 --
 
 INSERT INTO `receipt` (`id`, `customer_name`, `date_time`, `total_price`, `voucher_discount`, `final_price`) VALUES
-('0LG01739T3241472T', 'Marcus', 'Nov 22, 2023 1:44', 300.00, 100.00, 200.00),
-('1TH192884F2241021', 'Marcus', 'Nov 22, 2023 1:48', 300.00, 100.00, 200.00),
-('4M472315SE631505U', 'Marcus', 'Nov 22, 2023 1:50', 300.00, 100.00, 200.00),
-('6KP63538F9332000R', 'Marcus', 'Nov 22, 2023 1:53', 300.00, 100.00, 200.00),
-('7XT52708LX189801R', 'Marcus', 'Nov 14, 2023 20:11', 160.00, 0.00, 160.00),
-('9D285194KU822061V', 'Marcus', 'Nov 26, 2023 22:45', 220.00, 100.00, 120.00);
+
+('7XT52708LX189801R', 'Marcus', 'Nov 14, 2023 20:11', 160.00, 0.00, 160.00);
 
 -- --------------------------------------------------------
 
@@ -233,13 +230,7 @@ CREATE TABLE `receipt_item` (
 
 INSERT INTO `receipt_item` (`id`, `receipt_id`, `item_name`, `item_price`, `quantity`, `total_price`) VALUES
 (7, '7XT52708LX189801R', '123', 100.00, 1, 100.00),
-(8, '7XT52708LX189801R', 'testy', 30.00, 2, 60.00),
-(9, '0LG01739T3241472T', '123', 100.00, 3, 300.00),
-(10, '1TH192884F2241021', '123', 100.00, 3, 300.00),
-(11, '4M472315SE631505U', '123', 100.00, 3, 300.00),
-(12, '6KP63538F9332000R', '123', 100.00, 3, 300.00),
-(13, '9D285194KU822061V', '789', 50.00, 4, 200.00),
-(14, '9D285194KU822061V', '456', 10.00, 2, 20.00);
+(8, '7XT52708LX189801R', 'testy', 30.00, 2, 60.00);
 
 -- --------------------------------------------------------
 
@@ -404,6 +395,7 @@ ALTER TABLE `food_categories`
 --
 ALTER TABLE `food_ingredients`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
 
 --
 -- AUTO_INCREMENT for table `receipt_item`

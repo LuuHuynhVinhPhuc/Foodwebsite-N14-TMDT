@@ -78,7 +78,7 @@
                     <li>
                         <a href="request_manager.php"><i class="menu-icon fa-brands fa-buffer"></i>Manage Request</a>
                     </li>
-                    I
+
                     <h3 class="menu-title">UI elements</h3><!-- /.menu-title -->
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"

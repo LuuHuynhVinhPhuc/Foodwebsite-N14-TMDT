@@ -97,6 +97,11 @@ if (load_cart_data() > 0) {
 								if ($img_session != "" && $img_session != null) {
 									$count = $count + 1;
 									$grand_total = $grand_total + ($price_session * $qty_total_session);
+
+									if (isset($_SESSION["final_total"])) {
+										$final_total = $_SESSION["final_total"];
+									}
+									else $final_total = $grand_total;
 									?>
 									<tr>
 										<td class="prod-column">
