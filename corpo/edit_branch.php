@@ -72,21 +72,6 @@ while ($row = mysqli_fetch_array($res)) {
                                     <label for="cc-payment" class="control-label mb-1">Branch Name</label>
                                     <input id="food_name" name="food_name" type="text" class="form-control mb-3"
                                         placeholder="Enter Food Name" required value="<?php echo $branch_name; ?>">
-                                    <label for="cc-payment" class="control-label mb-1">Food Category</label>
-                                    <select name="food_category" class="form-control mb-3">
-                                        <?php
-                                        $res = mysqli_query($link, "select * from food_categories order by food_category asc");
-                                        while ($row = mysqli_fetch_array($res)) {
-                                            ?>
-                                            <option <?php if ($food_category == $row['food_category']) {
-                                                echo "selected";
-                                            } ?>>
-                                                <?php
-                                                echo $row['food_category'];
-                                                echo "</option>";
-                                        }
-                                        ?>
-                                    </select>
                                     <label for="cc-payment" class="control-label mb-1">Food Description</label>
                                     <textarea name="food_description" class="form-control mb-3" id="">
                                         <?php echo trim($food_description) ?>
@@ -170,16 +155,6 @@ while ($row = mysqli_fetch_array($res)) {
 <?php
 //logic nút submit
 if (isset($_POST["submit1"])) {
-    $ingredients = "";
-    $count = 0;
-    foreach ($_POST["ingredient"] as $check) {
-        $count = $count + 1;
-        if ($count == 1) {
-            $ingredients = $check;
-        } else {
-            $ingredients = $ingredients . "," . $check;
-        }
-    }
 
     mysqli_query($link, "update food set food_name='$_POST[food_name]', food_category='$_POST[food_category]', 
                 food_description='$_POST[food_description]', food_original_price='$_POST[food_original_price]',
@@ -187,27 +162,15 @@ if (isset($_POST["submit1"])) {
                 food_availability='$_POST[food_availability]',
                 food_veg_nonveg='$_POST[food_veg_nonveg]',food_ingredients='$ingredients', food_image = '$food_image' where id=$id")
         or die(mysqli_error($link));
-
-    if (isset($_SESSION["image_name01"])) {
-        copy('temp_photo/' . $_SESSION["image_name01"], 'images/' . $_SESSION["image_name01"]);
-        $dst1 = "images/" . $_SESSION["image_name01"];
-        mysqli_query($link, "update food set food_image = '$dst1' where id=$id") or die(mysqli_error($link));
-        unset($_SESSION["image_name01"]);
-    }
     ?>
-
-
 
     <script type="text/javascript">
         document.getElementById("error").style.display = "none";
         document.getElementById("success").style.display = "block";
     </script>
-    <?php
-
-    ?>
     <script type="text/javascript">
         setTimeout(function () {
-            window.location.href = "display_food.php";
+            window.location.href = "display_branch.php";
         }, 2500);
     </script>
 
@@ -216,9 +179,6 @@ if (isset($_POST["submit1"])) {
 ?>
 
 </div>
-
-<!-- handle image logic -->
-
 <?php
 include "footer.php";
 ?>
