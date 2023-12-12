@@ -58,6 +58,9 @@
                     <li>
                         <a href="transactions.php"><i class="menu-icon fa fa-dashboard"></i>Transactions History</a>
                     </li>
+                    <li>
+                        <a href="revenues.php"><i class="menu-icon fa fa-dashboard"></i>Revenue</a>
+                    </li>
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-slice"></i>Food</a>
                         <ul class="sub-menu children dropdown-menu">
