@@ -12,10 +12,10 @@
 							<!-- Info Widget -->
 							<div class="footer-widget info-widget">
 								<h4>Contact Info</h4>
-								<a class="number" href="tel:028-3456-7890">(028) 3456 7890</a>
+								<a class="number" href="tel:1800-123-4567">(1800) 123 4567</a>
 								<ul class="email-list">
-									<li><a href="mailto:phi.hoang@newpremises.group">phi.hoang@newpremises.group</a></li>
-									<li><a href="mailto:vinhphucluuhuynh@gmail.com">vinhphucluuhuynh@gmail.com</a></li>
+									<li><a href="mailto:contact@abc.co.in">contact@abc.co.in</a></li>
+									<li><a href="mailto:contact@abc.co.in">contact@abc.co.in</a></li>
 								</ul>
 							</div>
 						</div>
@@ -27,7 +27,7 @@
 								<div class="logo">
 									<a href="index-2.html"><img src="assets/images/logo-02.png" alt="" style="margin-top: -20px;" /></a>
 								</div>
-								<div class="text">Vivufood <br> 336 Nguyễn Thị Minh Khai, District 1 <br> Nguyen Cu Trinh Ward<br> Vietnam, 700000
+								<div class="text">Food Plaza <br> 336, abc Street,<br> Rajkot, 360004
 								</div>
 							</div>
 						</div>
@@ -38,7 +38,7 @@
 							<div class="footer-widget timing-widget">
 								<h4>Opening Hour</h4>
 								<ul class="timing-list">
-									<li>Tuesday- Saturday <span>10 AM - 9 PM</span></li>
+									<li>Tuesday- Saturday <span>10 AM – 9 PM</span></li>
 									<li>Sunday <span>Off</span></li>
 								</ul>
 							</div>
@@ -55,7 +55,7 @@
 			<div class="footer-bottom text-center" style="background-color: #eec300; color:black">
 				<div class="clearfix text-center">
 					<div class="text-center">
-						<div class="copyright text-center" style="color:black">&copy; Copyright 2023. All right
+						<div class="copyright text-center" style="color:black">&copy; Copyright 2020. All right
 							reserved.</div>
 					</div>
 				</div>

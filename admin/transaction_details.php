@@ -1,14 +1,19 @@
 <?php
+session_start();
 include "connections.php";
 include "header.php";
 $receipt_id = $_GET["id"];
+$_SESSION['ide'] = $receipt_id;
+
 $res = mysqli_query($link, "select * from receipt_item where receipt_id = '$receipt_id'");
+
 ?>
 
 <div class="col-lg-12">
     <div class="card">
         <div class="card-header">
-            <strong class="card-title">Receipt ID: <?= $receipt_id ?></strong>
+            <strong class="card-title">Receipt ID: <?= $receipt_id ?></strong> 
+            <span><button style="margin-left: 40px;"><a href='invoice.php?id={$row["id"]}' style='color: green;'>Print invoice</a></button></span>
         </div>
         <div class="card-body">
             <table class="table table-striped">
@@ -44,6 +49,7 @@ $res = mysqli_query($link, "select * from receipt_item where receipt_id = '$rece
                         echo $row["total_price"];
                         echo "</td>";
                         echo "</tr>";
+                        
                     }
                     ?>
                 </tbody>

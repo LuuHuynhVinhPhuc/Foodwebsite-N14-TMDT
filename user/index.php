@@ -5,28 +5,7 @@ include "../admin/connections.php";
 
 $_SESSION['logged_in'] = false;
 ?>
-<style>
-    .search {
-        margin: 15px 0;
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-    }
-    .search input {
-        padding: 6px 10px;
-        border-radius: 3px;
-        width: 350px;
-    }
-    .search-btn {
-        background: #e93030;
-        border-radius: 4px;
-        padding: 6px 11px;
-        color: #fff;
-    }
-    .search-btn:hover {
-        opacity: 0.9;
-    }
-</style>
+
 <!--================Slider Area =================-->
 <section class="main_slider_area slider_bg">
     <div id="main_slider" class="rev_slider" data-version="5.3.1.6">
@@ -251,10 +230,6 @@ $_SESSION['logged_in'] = false;
 
         <!-- MixitUp Galery -->
         <div class="mixitup-gallery">
-            <form class="search" method="GET" action="">
-                <input type="text" name="search" placeholder="Enter name..." value="<?php if(isset($_GET['search'])) echo $_GET['search'] ?>">
-                <button type="submit" class="search-btn">Search</button>
-            </form>
 
             <!--Filter-->
             <div class="filters clearfix">
@@ -277,72 +252,38 @@ $_SESSION['logged_in'] = false;
             </div>
 
             <div class="filter-list row clearfix">
+
                 <!-- Products Block -->
-                <?php if(isset($_GET['search'])) {  ?>
-                    <?php
-                        $search = isset($_GET['search']) ? $_GET['search'] : '';
-                        $count = 0;
-                        $sql = mysqli_query($link, "SELECT * FROM food WHERE approved = 'yes' AND food_name LIKE '%$search%'");
-                            if(mysqli_num_rows($sql) > 0){
-                                while ($row = mysqli_fetch_array($sql)) {
+                <?php
+                $res = mysqli_query($link, "select * from food where approved = 'yes'");
+                while ($row = mysqli_fetch_array($res)) {
                     ?>
-                                <div class="product-block all mix <?php echo $row["food_category"]; ?> salad fest wraps fries col-lg-3 col-md-6 col-sm-12">
-                                    <div class="inner-box">
-                                        <figure class="image-box">
-                                            <img src="../admin/<?php echo $row["food_image"] ?>" alt="">
-                                        </figure>
-                                        <div class="lower-content">
-                                            <h4>
-                                                <a href="food_description.php?id=<?php echo $row["id"]; ?>">
-                                                    <?php echo $row["food_name"] ?>
-                                                </a>
-                                            </h4>
-                                            <div class="text">
-                                                <?php echo substr($row["food_description"], 0, 30) ?>...
-                                            </div>
-                                            <div class="price">$<?php echo $row["food_discount_price"] ?></div>
-                                            <div class="lower-box">
-                                                <a href="food_description.php?id=<?php echo $row["id"]; ?>"
-                                                    class="theme-btn btn-style-five"><span class="txt">Order Now</span></a>
-                                            </div>
-                                        </div>
-                                    </div>
+                    <div class="product-block all mix <?php echo $row["food_category"]; ?> salad fest wraps fries col-lg-3 col-md-6 col-sm-12">
+                        <div class="inner-box">
+                            <figure class="image-box">
+                                <img src="../admin/<?php echo $row["food_image"] ?>" alt="">
+                            </figure>
+                            <div class="lower-content">
+                                <h4>
+                                    <a href="food_description.php?id=<?php echo $row["id"]; ?>">
+                                        <?php echo $row["food_name"] ?>
+                                    </a>
+                                </h4>
+                                <div class="text">
+                                    <?php echo substr($row["food_description"], 0, 30) ?>...
                                 </div>
-                            <?php }
-                            } else {
-                                    echo '<p style="font-size: 25px; color: #e93030; margin: auto;">Không có sản phẩm phù hợp với yêu cầu tìm kiếm của bạn</p>';
-                            }    ?>
-                <?php  } else { ?>
-                    <?php
-                    $res = mysqli_query($link, "select * from food where approved = 'yes'");
-                    while ($row = mysqli_fetch_array($res)) {
-                        ?>
-                        <div class="product-block all mix <?php echo $row["food_category"]; ?> salad fest wraps fries col-lg-3 col-md-6 col-sm-12">
-                            <div class="inner-box">
-                                <figure class="image-box">
-                                    <img src="../admin/<?php echo $row["food_image"] ?>" alt="">
-                                </figure>
-                                <div class="lower-content">
-                                    <h4>
-                                        <a href="food_description.php?id=<?php echo $row["id"]; ?>">
-                                            <?php echo $row["food_name"] ?>
-                                        </a>
-                                    </h4>
-                                    <div class="text">
-                                        <?php echo substr($row["food_description"], 0, 30) ?>...
-                                    </div>
-                                    <div class="price">$<?php echo $row["food_discount_price"] ?></div>
-                                    <div class="lower-box">
-                                        <a href="food_description.php?id=<?php echo $row["id"]; ?>"
-                                            class="theme-btn btn-style-five"><span class="txt">Order Now</span></a>
-                                    </div>
+                                <div class="price">$<?php echo $row["food_discount_price"] ?></div>
+                                <div class="lower-box">
+                                    <a href="food_description.php?id=<?php echo $row["id"]; ?>"
+                                        class="theme-btn btn-style-five"><span class="txt">Order
+                                            Now</span></a>
                                 </div>
                             </div>
                         </div>
-                        <?php
-                    }
-                    ?>
-                <?php } ?>
+                    </div>
+                    <?php
+                }
+                ?>
 
 
             </div>
