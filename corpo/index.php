@@ -17,14 +17,14 @@ include "../admin/connections.php";
     <link rel="apple-touch-icon" href="apple-icon.png">
     <link rel="shortcut icon" href="favicon.ico">
 
-    <link rel="stylesheet" href="assets/css/normalize.css">
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/css/themify-icons.css">
-    <link rel="stylesheet" href="assets/css/flag-icon.min.css">
-    <link rel="stylesheet" href="assets/css/cs-skin-elastic.css">
+    <link rel="stylesheet" href="../admin/assets/css/normalize.css">
+    <link rel="stylesheet" href="../admin/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../admin/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../admin/assets/css/themify-icons.css">
+    <link rel="stylesheet" href="../admin/assets/css/flag-icon.min.css">
+    <link rel="stylesheet" href="../admin/assets/css/cs-skin-elastic.css">
     <!-- <link rel="stylesheet" href="assets/css/bootstrap-select.less"> -->
-    <link rel="stylesheet" href="assets/scss/style.css">
+    <link rel="stylesheet" href="../admin/assets/scss/style.css">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
@@ -50,7 +50,12 @@ include "../admin/connections.php";
                             <label>Mật khẩu</label>
                             <input type="password" class="form-control" name="password" required>
                         </div>
-                        <button type="submit" name="submit1" class="btn btn-success btn-flat m-b-30 m-t-30">Sign in</button>
+                        <button type="submit" name="submit1" class="btn btn-success form-group btn-flat m-b-30 m-t-30">Sign in</button>
+                        <div class="form-group">
+                            <a href="../admin/index.php" class="btn btn-primary btn-flat m-b-30 m-t-30">
+                                Click here to go back to admin page
+                            </a>
+                        </div>
                         <div class="alert alert-danger" id="invalid" role="alert" style="margin-top: 20px; display: none;">
                             Sai tên đăng nhập hoặc mật khẩu
                         </div>

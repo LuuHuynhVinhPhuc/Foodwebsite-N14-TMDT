@@ -3,7 +3,20 @@ include "connections.php";
 include "header.php";
 ?>
 
-
+<style>
+    .submit-btn {
+        background: #2ee932;
+        border: none;
+        padding: 5px 19px;
+        color: #fff;
+        border-radius: 4px;
+        font-size: 20px;
+        cursor: pointer;
+    }
+    .submit-btn:hover {
+        opacity: 0.8;
+    }
+</style>
 <!--content area-->
 <div class="breadcrumbs">
     <div class="col-sm-4">
@@ -99,6 +112,9 @@ include "header.php";
                     ?>
                 </tbody>
             </table>
+            <form class="form_export_pdf" action="./export_available_ingredients.php" method="post">
+                <input class="submit-btn" type="submit" value="Xuất PDF">
+            </form>
         </div>
     </div>
 </div>
@@ -145,6 +161,9 @@ include "header.php";
                     ?>
                 </tbody>
             </table>
+            <form class="form_export_pdf" action="./export_notapproved_ingredients.php" method="post">
+                <input class="submit-btn" type="submit" value="Xuất PDF">
+            </form>
         </div>
     </div>
 </div>

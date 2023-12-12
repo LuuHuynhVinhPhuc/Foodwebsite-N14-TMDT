@@ -85,14 +85,14 @@ while ($row = mysqli_fetch_array($res)) {
                                     <label for="cc-payment" class="control-label mb-1">Food Category</label>
                                     <select name="food_category" class="form-control mb-3">
                                         <?php
-                                        $res = mysqli_query($link, "select * from food_categories order by food_category asc");
+                                        $res = mysqli_query($link, "select * from EmployeeTitle order by Title asc");
                                         while ($row = mysqli_fetch_array($res)) {
                                             ?>
-                                            <option <?php if ($food_category == $row['food_category']) {
+                                            <option <?php if ($food_category == $row['Title']) {
                                                 echo "selected";
                                             } ?>>
                                                 <?php
-                                                echo $row['food_category'];
+                                                echo $row['title'];
                                                 echo "</option>";
                                         }
                                         ?>
