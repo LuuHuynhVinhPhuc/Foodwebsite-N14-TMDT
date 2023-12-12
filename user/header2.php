@@ -38,21 +38,6 @@ if (isset($_SESSION["cart"])) {
     <!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->
 </head>
 <body>
-
-    <!--Start of Tawk.to Script-->
-    <script type="text/javascript">
-        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
-        (function () {
-            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
-            s1.async = true;
-            s1.src = 'https://embed.tawk.to/65603408ba9fcf18a80e678d/1hfvsmga1';
-            s1.charset = 'UTF-8';
-            s1.setAttribute('crossorigin', '*');
-            s0.parentNode.insertBefore(s1, s0);
-        })();
-    </script>
-    <!--End of Tawk.to Script-->
-
     <div class="page-wrapper">
 
         <!-- Preloader -->
