@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "../admin/connections.php";
+include "./admin/connections.php";
 $max = 0;
 if (isset($_SESSION["cart"])) {
 	$max = sizeof($_SESSION["cart"]);

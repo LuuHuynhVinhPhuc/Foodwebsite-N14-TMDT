@@ -1,6 +1,6 @@
 <?php
 include "header.php";
-include "../admin/connections.php";
+include "./admin/connections.php";
 $id = $_GET["id"];
 $food_name = "";
 $food_description = "";
@@ -41,7 +41,7 @@ $food_ingredients = str_replace(',', ', ', $food_ingredients);
                     <div class="row clearfix">
                         <div class="image-column col-lg-6 col-md-12 col-sm-12">
                             <figure class="image-box"><a href="" class="lightbox-image" title="Image Caption Here"><img
-                                        src="../admin/<?php echo $food_image ?>" alt=""></a></figure>
+                                        src="./admin/<?php echo $food_image ?>" alt=""></a></figure>
                         </div>
                         <div class="info-column col-lg-6 col-md-12 col-sm-12">
                             <div class="inner-column">

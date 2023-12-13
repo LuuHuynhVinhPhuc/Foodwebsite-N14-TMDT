@@ -106,7 +106,7 @@ if (load_cart_data() > 0) {
 										<td class="prod-column">
 											<div class="column-box">
 												<figure class="prod-thumb"><a href="#"><img
-															src="../admin/<?php echo $img_session ?>" alt=""></a></figure>
+															src="./admin/<?php echo $img_session ?>" alt=""></a></figure>
 											</div>
 										</td>
 										<!-- food description -->

@@ -2,7 +2,7 @@
 session_start();
 include "header2.php";
 include "slider.php";
-include "../admin/connections.php";
+include "./admin/connections.php";
 
 // unset($_SESSION['uname']);
 
@@ -269,7 +269,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                     <div class="product-block all mix <?php echo $row["food_category"]; ?> salad fest wraps fries col-lg-3 col-md-6 col-sm-12">
                         <div class="inner-box">
                             <figure class="image-box">
-                                <img src="../admin/<?php echo $row["food_image"] ?>" alt="">
+                                <img src="./admin/<?php echo $row["food_image"] ?>" alt="">
                             </figure>
                             <div class="lower-content">
                                 <h4>
