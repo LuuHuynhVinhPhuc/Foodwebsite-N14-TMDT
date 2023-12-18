@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "../admin/connections.php";
+include "./admin/connections.php";
 
 // checking account 
 if (isset($_POST["submit"])) {
